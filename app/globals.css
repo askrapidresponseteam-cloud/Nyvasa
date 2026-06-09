@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bone: #FAF7F0;
+  --ink: #1A1612;
+  --loden: #26352B;
+  --sienna: #B85C3A;
+  --smoke: #6B6259;
+  --hairline: #D9D2C5;
+}
+
+html, body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-feature-settings: "ss01", "ss02", "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--loden);
+  color: var(--bone);
+}
+
+/* Editorial number marker — the signature element */
+.edition-mark {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+.edition-mark .num {
+  color: var(--sienna);
+}
+
+/* Hairline button — no border-radius, no gradient, no shadow */
+.btn-editorial {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.75rem;
+  background: var(--ink);
+  color: var(--bone);
+  border: none;
+  cursor: pointer;
+  transition: background 200ms ease;
+}
+
+.btn-editorial:hover {
+  background: var(--loden);
+}
+
+.btn-editorial:disabled {
+  background: var(--smoke);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.75rem;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+  cursor: pointer;
+  transition: border-color 200ms ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--ink);
+}
+
+/* Input — no border-radius, hairline underline only */
+.input-editorial {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hairline);
+  padding: 0.85rem 0;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 1.125rem;
+  color: var(--ink);
+  width: 100%;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+
+.input-editorial:focus {
+  border-bottom-color: var(--ink);
+}
+
+.input-editorial::placeholder {
+  color: var(--smoke);
+  font-style: italic;
+}
+
+/* Drop zone */
+.dropzone {
+  border: 1px dashed var(--hairline);
+  background: rgba(255, 255, 255, 0.4);
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.dropzone:hover, .dropzone.dragging {
+  border-color: var(--loden);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
