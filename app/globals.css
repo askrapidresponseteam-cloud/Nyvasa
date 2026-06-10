@@ -997,3 +997,87 @@ section.block{padding:clamp(70px,9vh,120px) 0}
   .city-grid{grid-template-columns:1fr 1fr}
   .cat{flex-basis:72%}
 }
+
+/* ============================================================
+   NYVASA ELITE CONCIERGE (Modules 12 + 13)
+   Black/gold private-wealth layer on the core system.
+   All classes prefixed cz- to stay isolated from the landing UI.
+   ============================================================ */
+.cz-page{min-height:100vh;background:#0c0e0d;color:#ece7dc}
+.cz-wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.cz-eyebrow{font-family:var(--font-stat),sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#c9a35c;display:flex;align-items:center;gap:10px}
+.cz-eyebrow::before{content:"";width:26px;height:1px;background:#c9a35c;opacity:.7}
+
+/* top bar */
+.cz-top{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid rgba(201,163,92,.18)}
+.cz-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#ece7dc}
+.cz-brand .bm{width:30px;height:30px;border:1px solid #c9a35c;display:grid;place-items:center;font-family:var(--font-display),sans-serif;font-weight:700;color:#c9a35c;font-size:13px}
+.cz-brand .bn{font-family:var(--font-stat),sans-serif;letter-spacing:.18em;font-weight:700;font-size:13px}
+.cz-tier{font-family:var(--font-stat),sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#0c0e0d;background:#c9a35c;padding:6px 12px}
+.cz-back{color:#9b9588;text-decoration:none;font-size:13px;font-family:var(--font-stat),sans-serif;letter-spacing:.04em}
+.cz-back:hover{color:#c9a35c}
+
+/* greeting */
+.cz-hero{padding:64px 0 36px}
+.cz-hero h1{font-family:var(--font-display),sans-serif;font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.06;margin:16px 0 10px;color:#f4efe4}
+.cz-hero .sub{color:#9b9588;font-size:16px;max-width:560px;line-height:1.6}
+
+/* briefing card */
+.cz-brief{margin-top:34px;border:1px solid rgba(201,163,92,.28);background:linear-gradient(180deg,rgba(201,163,92,.07),rgba(201,163,92,.02));padding:26px 26px 8px}
+.cz-brief .bt{font-family:var(--font-stat),sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9a35c;margin-bottom:14px}
+.cz-bitem{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid rgba(236,231,220,.08)}
+.cz-bitem:first-of-type{border-top:0}
+.cz-bitem .cz-bic{width:34px;height:34px;flex:0 0 34px;border:1px solid rgba(201,163,92,.45);display:grid;place-items:center;color:#c9a35c}
+.cz-bitem p{margin:4px 0 0;font-size:15px;line-height:1.55;color:#cfc9bb}
+.cz-bitem b{color:#f4efe4;font-weight:600}
+
+/* actions */
+.cz-actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 0}
+.cz-btn{appearance:none;border:1px solid #c9a35c;background:transparent;color:#e8dcc0;font-family:var(--font-stat),sans-serif;font-size:13px;letter-spacing:.06em;padding:13px 22px;cursor:pointer;transition:background .25s var(--ease,ease),color .25s}
+.cz-btn:hover{background:rgba(201,163,92,.12)}
+.cz-btn.primary{background:#c9a35c;color:#15130d;font-weight:700}
+.cz-btn.primary:hover{background:#d8b46f}
+.cz-note{margin-top:14px;font-size:13px;color:#c9a35c;font-family:var(--font-stat),sans-serif;letter-spacing:.03em;min-height:18px}
+
+/* advisor card */
+.cz-adv{margin:54px 0 0;border:1px solid rgba(236,231,220,.12);padding:28px;display:grid;grid-template-columns:auto 1fr;gap:22px;background:rgba(255,255,255,.015)}
+.cz-adv .av{width:64px;height:64px;border:1px solid #c9a35c;display:grid;place-items:center;font-family:var(--font-display),sans-serif;font-size:20px;color:#c9a35c}
+.cz-adv h3{margin:2px 0 2px;font-family:var(--font-display),sans-serif;font-size:21px;font-weight:600;color:#f4efe4}
+.cz-adv .role{font-size:13px;color:#9b9588;font-family:var(--font-stat),sans-serif;letter-spacing:.05em}
+.cz-adv .langs{margin-top:6px;font-size:12.5px;color:#7e7a6f}
+.cz-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cz-chip{font-size:12px;font-family:var(--font-stat),sans-serif;letter-spacing:.04em;color:#cfc9bb;border:1px solid rgba(236,231,220,.16);padding:7px 12px}
+
+/* journey */
+.cz-journey{padding:64px 0 90px}
+.cz-jhead h2{font-family:var(--font-display),sans-serif;font-size:clamp(26px,3.4vw,38px);font-weight:600;color:#f4efe4;margin:14px 0 8px}
+.cz-jhead p{color:#9b9588;max-width:600px;line-height:1.6;margin:0 0 38px}
+.cz-stage{position:relative;display:grid;grid-template-columns:56px 1fr;gap:18px;padding:0 0 38px}
+.cz-stage::before{content:"";position:absolute;left:27px;top:54px;bottom:6px;width:1px;background:rgba(236,231,220,.12)}
+.cz-stage:last-child::before{display:none}
+.cz-dot{width:54px;height:54px;border:1px solid rgba(236,231,220,.2);display:grid;place-items:center;font-family:var(--font-stat),sans-serif;font-size:15px;color:#9b9588;background:#0c0e0d;z-index:1}
+.cz-stage.done .cz-dot{border-color:#c9a35c;color:#c9a35c}
+.cz-stage.active .cz-dot{background:#c9a35c;border-color:#c9a35c;color:#15130d;font-weight:700}
+.cz-stage.next .cz-dot{border-color:rgba(201,163,92,.5);color:#c9a35c}
+.cz-scard{border:1px solid rgba(236,231,220,.1);padding:22px 24px;background:rgba(255,255,255,.012)}
+.cz-stage.active .cz-scard{border-color:rgba(201,163,92,.45);background:linear-gradient(180deg,rgba(201,163,92,.06),rgba(201,163,92,.015))}
+.cz-srow{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.cz-scard h3{margin:0;font-family:var(--font-display),sans-serif;font-size:19px;font-weight:600;color:#f4efe4}
+.cz-status{font-family:var(--font-stat),sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border:1px solid rgba(236,231,220,.18);color:#9b9588}
+.cz-stage.done .cz-status{color:#c9a35c;border-color:rgba(201,163,92,.4)}
+.cz-stage.active .cz-status{color:#15130d;background:#c9a35c;border-color:#c9a35c;font-weight:700}
+.cz-scard .detail{margin:12px 0 0;font-size:14.5px;line-height:1.65;color:#b6b0a2}
+.cz-ai{margin-top:14px;display:flex;gap:10px;align-items:flex-start;border-left:2px solid #c9a35c;padding:10px 14px;background:rgba(201,163,92,.05)}
+.cz-ai .tag{font-family:var(--font-stat),sans-serif;font-size:10px;letter-spacing:.18em;color:#c9a35c;text-transform:uppercase;padding-top:2px;white-space:nowrap}
+.cz-ai p{margin:0;font-size:13.5px;line-height:1.55;color:#d8d2c4}
+.cz-docs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cz-doc{font-size:11.5px;font-family:var(--font-stat),sans-serif;color:#9b9588;border:1px dashed rgba(236,231,220,.22);padding:6px 10px}
+.cz-act{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-stat),sans-serif;font-size:13px;letter-spacing:.05em;color:#e8dcc0;border:1px solid rgba(201,163,92,.55);padding:10px 16px;background:transparent;cursor:pointer;transition:background .25s}
+.cz-act:hover{background:rgba(201,163,92,.12)}
+
+@media(max-width:640px){
+  .cz-adv{grid-template-columns:1fr}
+  .cz-stage{grid-template-columns:44px 1fr;gap:12px}
+  .cz-dot{width:42px;height:42px}
+  .cz-stage::before{left:21px;top:46px}
+}
