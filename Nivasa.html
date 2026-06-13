@@ -1,0 +1,3169 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="sage" data-cards="sharp" data-hero-layout="overlap">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Nyvasa - Luxury Homes</title>
+<meta name="theme-color" content="#f4f1ea" id="themeColorMeta">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Nyvasa">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20fill='%233a4a3f'/%3E%3Cpath%20d='M7%2035.5V17.5a13%2013%200%200%201%2026%200v18'%20stroke='%23f4f1ea'%20stroke-width='2'%20stroke-linecap='round'%20opacity='0.5'%20fill='none'/%3E%3Cpath%20d='M14%2034.5V16l12%2016.5V16'%20stroke='%23f4f1ea'%20stroke-width='2.4'%20stroke-linecap='round'%20stroke-linejoin='round'%20fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   NIVASA — luxury real-estate marketplace
+   Editorial / architectural visual language
+   ============================================================ */
+
+/* ---- Tokens ---- */
+:root{
+  /* palette: SAGE (default) */
+  --paper:#f4f1ea;
+  --paper-2:#faf8f3;
+  --panel:#ece7dc;
+  --ink:#1a1a17;
+  --ink-2:#3a3a34;
+  --muted:#6d685b;
+  --line:#cec7b6;
+  --accent:#3a4a3f;
+  --accent-2:#6b7a64;
+  --accent-soft:#aebaa6;
+  --on-accent:#f4f1ea;
+  --brass:#a9742f;
+  --brass-2:#c79550;
+  --brass-soft:rgba(169,116,47,.13);
+
+  --font-display:'Archivo';
+  --font-body:'Hanken Grotesk';
+  --font-stat:'Archivo';
+
+  --radius:4px;
+  --radius-lg:6px;
+  --maxw:1320px;
+  --gut:clamp(20px,4vw,64px);
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* palette variants via data-palette */
+:root[data-palette="sand"]{
+  --paper:#f6f2ea; --paper-2:#fbf8f2; --panel:#efe7d8;
+  --ink:#1c1814; --ink-2:#3b342b; --muted:#857b6c; --line:#e0d6c4;
+  --accent:#b08545; --accent-2:#caa063; --accent-soft:#e2cba0; --on-accent:#fbf8f2;
+}
+:root[data-palette="navy"]{
+  --paper:#f1f3f6; --paper-2:#fafbfc; --panel:#e4e8ef;
+  --ink:#161c28; --ink-2:#333c4d; --muted:#717a8a; --line:#d3d9e3;
+  --accent:#1b2b4a; --accent-2:#3a5180; --accent-soft:#9aa9c4; --on-accent:#f1f3f6;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body),system-ui,sans-serif;
+  background-color:var(--paper);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+
+::selection{background:var(--accent);color:var(--on-accent)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.eyebrow{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;color:var(--muted);
+}
+.serif-num{font-family:var(--font-stat),sans-serif;font-weight:800;
+  font-stretch:75%;letter-spacing:-.01em;line-height:.9}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--gut);
+  pointer-events:none;
+}
+.nav>*{pointer-events:auto}
+.glass{
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.30);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:0 8px 30px rgba(20,18,12,.18);
+}
+.nav-left{display:flex;align-items:center;gap:6px;border-radius:999px;padding:7px 8px 7px 20px}
+.brand{display:flex;align-items:baseline;gap:9px;margin-right:14px}
+.brand-mark{font-family:var(--font-display),sans-serif;font-weight:800;font-size:19px;letter-spacing:.04em;color:#fff;text-shadow:0 1px 10px rgba(8,12,14,.45)}
+.brand-dot{width:6px;height:6px;border-radius:50%;background:var(--accent-soft);transform:translateY(-3px)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{
+  color:#fff;font-size:14.5px;font-weight:500;white-space:nowrap;
+  padding:9px 15px;border-radius:999px;transition:background .2s var(--ease),color .2s;
+  position:relative;text-shadow:0 1px 10px rgba(8,12,14,.5);
+}
+.nav-link:hover{background:rgba(255,255,255,.16)}
+.nav-link.active{background:#fff;color:#1a1a17;text-shadow:none}
+
+.nav-right{display:flex;align-items:center;gap:12px}
+.loc-chip{
+  display:flex;align-items:center;gap:9px;border-radius:999px;
+  padding:10px 16px;color:#fff;font-size:14px;font-weight:500;
+  transition:background .2s;text-shadow:0 1px 10px rgba(8,12,14,.5);
+}
+.loc-chip:hover{background:rgba(255,255,255,.18)}
+.loc-chip .ic{width:16px;height:16px;opacity:.9}
+.loc-chip b{font-weight:700}
+.loc-chip .caret{width:12px;height:12px;opacity:.7;margin-left:-2px}
+
+.btn-book{
+  display:flex;align-items:center;gap:10px;border-radius:999px;
+  padding:11px 12px 11px 22px;color:#fff;font-size:14.5px;font-weight:600;
+  transition:transform .25s var(--ease),background .2s;text-shadow:0 1px 10px rgba(8,12,14,.5);
+}
+.btn-book:hover{transform:translateY(-1px);background:rgba(255,255,255,.2)}
+.btn-book .pill-ic{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.9);color:#1a1a17;
+}
+.btn-book .pill-ic svg{width:16px;height:16px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;isolation:isolate}
+.hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:var(--ink)}
+.hero-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);
+  filter:saturate(1.06) contrast(1.07) brightness(.9);
+  animation:slowzoom 18s var(--ease) forwards}
+@keyframes slowzoom{to{transform:scale(1)}}
+.hero-fallback{position:absolute;inset:0;z-index:-3;
+  background:
+    radial-gradient(120% 90% at 70% 10%,#9fb6c9,transparent 60%),
+    linear-gradient(160deg,#7d96a8 0%,#5b6f63 55%,#36433a 100%);}
+.hero-scrim{position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(9,13,15,.62) 0%,rgba(9,13,15,.22) 24%,rgba(9,13,15,.04) 46%,rgba(9,13,15,.34) 70%,rgba(9,13,15,.72) 100%),
+    radial-gradient(120% 70% at 4% 2%,rgba(9,13,15,.5),transparent 46%),
+    radial-gradient(135% 75% at 6% 104%,rgba(9,13,15,.62),transparent 52%);}
+:root[data-hero-theme="dark"] .hero-scrim{
+  background:linear-gradient(180deg,rgba(8,10,12,.62) 0%,rgba(8,10,12,.35) 45%,rgba(8,10,12,.66) 100%);}
+
+/* ── Top property-type filter (active pill expands to show label) ── */
+.hero-typefilter{position:absolute;top:clamp(92px,12vh,124px);left:50%;transform:translateX(-50%);z-index:4;
+  display:flex;gap:8px;align-items:center}
+.htf{display:flex;align-items:center;height:46px;width:46px;justify-content:center;
+  border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.32);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;overflow:hidden;
+  transition:width .3s var(--ease),background .2s,color .2s;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.htf-ic{display:grid;place-items:center;flex:none;width:22px}
+.htf-ic svg{width:19px;height:19px}
+.htf-l{font-size:14px;font-weight:600;white-space:nowrap;max-width:0;opacity:0;overflow:hidden;transition:.3s var(--ease)}
+.htf:hover{background:rgba(255,255,255,.24)}
+.htf.active{width:auto;padding:0 20px 0 16px;gap:9px;background:rgba(255,255,255,.94);color:#1a1a17;border-color:transparent;text-shadow:none}
+.htf.active .htf-l{max-width:160px;opacity:1}
+
+/* ── On-image annotations ── */
+.hero-annote{position:absolute;left:var(--gut);top:clamp(108px,16vh,170px);z-index:3;
+  display:flex;align-items:flex-start;gap:12px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.hero-annote .anno-ic{width:34px;height:34px;display:grid;place-items:center;opacity:.85;flex:none}
+.hero-annote .anno-ic svg{width:30px;height:30px}
+.hero-annote .a1{font-size:15px;font-weight:600}
+.hero-annote .a2{font-size:13px;color:rgba(255,255,255,.72);margin-top:2px}
+
+.hero-pricemark{position:absolute;right:38%;top:45%;z-index:3;display:flex;align-items:center;gap:14px;
+  color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7),0 2px 16px rgba(0,0,0,.6)}
+.hero-pricemark .pm-dot{width:30px;height:30px;display:grid;place-items:center;opacity:.92;flex:none}
+.hero-pricemark .pm-dot svg{width:26px;height:26px}
+.hero-pricemark .pm-line{width:clamp(40px,7vw,96px);height:1px;background:rgba(255,255,255,.5)}
+.hero-pricemark .pm-price{font-family:var(--font-stat);font-weight:800;font-stretch:80%;font-size:24px;line-height:1}
+.hero-pricemark .pm-code{font-size:13px;color:rgba(255,255,255,.72);margin-top:3px}
+
+/* theme toggle — mid-right */
+.theme-toggle{position:absolute;right:var(--gut);top:clamp(106px,15vh,160px);z-index:5;
+  display:flex;gap:4px;border-radius:999px;padding:5px}
+.theme-toggle button{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  color:rgba(255,255,255,.8);transition:.2s}
+.theme-toggle button svg{width:17px;height:17px}
+.theme-toggle button.on{background:rgba(255,255,255,.92);color:#1a1a17}
+
+/* ── Bottom-left search ── */
+.hero-search{position:absolute;left:var(--gut);bottom:clamp(34px,5vh,60px);z-index:6;width:min(400px,42vw)}
+.hs-toggle{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.hsg{display:flex;align-items:center;gap:9px;padding:11px 20px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  color:#fff;font-size:14px;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.4);transition:.2s}
+.hsg-ic{display:grid}.hsg-ic svg{width:16px;height:16px}
+.hsg.active{background:var(--brass);border-color:transparent;color:#fff;text-shadow:none;
+  box-shadow:0 6px 18px color-mix(in oklab,var(--brass) 40%,transparent)}
+.hsg-go{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.92);color:#1a1a17;flex:none;transition:.2s}
+.hsg-go svg{width:18px;height:18px}
+.hsg-go:hover{background:#fff;transform:translateY(-1px)}
+
+.hs-card{background:var(--paper-2);padding:24px 26px;box-shadow:0 24px 60px rgba(16,18,14,.32);
+  border:1px solid var(--line)}
+.hs-loc{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);
+  margin-bottom:16px;padding:8px 12px;border:1px solid var(--line);cursor:pointer;transition:.2s}
+.hs-loc:hover{border-color:var(--ink)}
+.hs-loc-ic{display:grid;color:var(--accent)}.hs-loc-ic svg{width:14px;height:14px}
+.hs-loc-caret{display:grid;opacity:.6}.hs-loc-caret svg{width:13px;height:13px}
+.hs-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.hs-head h1{font-family:var(--font-display);font-weight:700;font-size:clamp(27px,2.5vw,36px);
+  line-height:1.04;letter-spacing:-.01em}
+.hs-head .geo{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);
+  color:var(--accent);flex:none;transition:.2s}
+.hs-head .geo:hover{background:var(--accent);color:var(--on-accent);border-color:transparent}
+.hs-head .geo svg{width:17px;height:17px}
+.hs-head .geo.loading svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hs-sub{color:var(--muted);font-size:14px;margin-top:11px;line-height:1.5;text-wrap:pretty}
+.hs-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hs-chip{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid var(--line);
+  font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.hs-chip svg{width:15px;height:15px;opacity:.6}
+.hs-search{width:100%;margin-top:20px;padding:15px;background:var(--brass);color:#fff;
+  display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;
+  box-shadow:0 10px 26px color-mix(in oklab,var(--brass) 38%,transparent);transition:.2s}
+.hs-search:hover{background:var(--brass-2);transform:translateY(-1px)}
+.hs-search svg{width:17px;height:17px}
+
+/* ── Bottom-right nearby card ── */
+.hero-nearby{position:absolute;right:var(--gut);bottom:clamp(34px,5vh,60px);z-index:6;width:min(332px,30vw);
+  display:flex;flex-direction:column;text-align:left;background:var(--paper-2);
+  box-shadow:0 24px 60px rgba(16,18,14,.32);border:1px solid var(--line);cursor:pointer;transition:transform .25s var(--ease)}
+.hero-nearby:hover{transform:translateY(-3px)}
+.hn-media{position:relative;display:block;height:165px;overflow:hidden;background:var(--panel)}
+.hn-media img{width:100%;height:100%;object-fit:cover}
+.hero-nearby .hn-badge{position:absolute;top:13px;left:13px;display:flex;align-items:center;gap:6px;
+  padding:6px 12px;background:rgba(255,255,255,.93);color:#1a1a17;font-size:12px;font-weight:600}
+.hn-badge svg{width:13px;height:13px}
+.hn-body{display:flex;flex-direction:column;padding:15px 18px 17px}
+.hn-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.hn-imgs{font-size:12.5px;font-weight:600;color:var(--muted)}
+.hn-chat{width:30px;height:30px;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-2)}
+.hn-chat svg{width:15px;height:15px}
+.hn-ttl{font-family:var(--font-display);font-weight:700;font-size:18px;line-height:1.1}
+.hn-loc{font-size:12.5px;color:var(--muted);margin-top:4px}
+.hn-specs{display:flex;gap:14px;margin-top:10px;color:var(--ink-2);font-size:12.5px;font-weight:500}
+.hn-specs i{display:flex;align-items:center;gap:5px;font-style:normal}
+.hn-specs svg{width:14px;height:14px;color:var(--brass)}
+.hn-dist{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.hn-dist span{display:flex;align-items:center;gap:6px}
+.hn-dist svg{width:14px;height:14px}
+.hn-dist b{color:var(--brass);font-family:var(--font-stat);font-weight:800;font-size:16px}
+
+/* ============================================================
+   FEATURED SPLIT PANEL
+   ============================================================ */
+.featured{display:grid;grid-template-columns:minmax(360px,42%) 1fr;min-height:340px;background:var(--paper-2)}
+.fx-plan{background:var(--ink);color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:34px 38px}
+.fx-plan .fx-photo{position:absolute;inset:0;z-index:0;overflow:hidden}
+.fx-plan .fx-photo img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.fx-plan .fx-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(12,15,13,.58),rgba(12,15,13,.86))}
+.fx-plan .blueprint{position:absolute;inset:0;opacity:.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:26px 26px;}
+.fx-plan .bp-art{position:absolute;inset:24px;opacity:.55;mix-blend-mode:screen;object-fit:contain}
+.fx-plan-top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between}
+.fx-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.65)}
+.fx-plan-foot{position:relative;z-index:2}
+.fx-plan-foot .pl-name{font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.05}
+.fx-plan-foot .pl-loc{color:rgba(255,255,255,.6);font-size:14px;margin-top:5px;display:flex;align-items:center;gap:7px}
+.fx-plan-foot .pl-loc svg{width:15px;height:15px;flex:none}
+
+.fx-stats{padding:34px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.fx-row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,2.6vw,44px)}
+.fx-stat .k{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;font-weight:500;margin-bottom:8px}
+.fx-stat .k svg{width:17px;height:17px;opacity:.7}
+.fx-stat .v{font-family:var(--font-stat),sans-serif;font-weight:800;font-stretch:75%;font-size:clamp(28px,2.4vw,38px);line-height:.92;letter-spacing:-.015em;white-space:nowrap}
+.fx-stat .v sup{font-size:.5em;vertical-align:super;font-weight:700}
+.fx-price .v{color:var(--brass)}
+.fx-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:22px}
+.fx-nav{display:flex;gap:10px}
+.fx-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);transition:.2s}
+.fx-nav button:hover{background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
+.fx-nav button svg{width:18px;height:18px}
+.fx-type{display:flex;align-items:center;gap:18px;margin-left:auto}
+.fx-type .lbl{text-align:right}
+.fx-type .lbl .t1{font-family:var(--font-display);font-weight:600;font-size:18px}
+.fx-type .lbl .t2{color:var(--muted);font-size:13.5px}
+.fx-thumbs{display:flex}
+.fx-thumbs img{width:62px;height:62px;border-radius:50%;object-fit:cover;border:3px solid var(--paper-2);margin-left:-18px;background:var(--panel)}
+.fx-thumbs img:first-child{margin-left:0}
+
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+section.block{padding:clamp(70px,9vh,120px) 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:56px}
+.sec-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.4vw,60px);line-height:1;letter-spacing:-.02em;max-width:14ch;text-wrap:balance}
+.sec-head p{color:var(--muted);font-size:16px;max-width:42ch;text-wrap:pretty}
+.link-arrow{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;white-space:nowrap;border-bottom:1.5px solid var(--ink);padding-bottom:3px;transition:gap .2s}
+.link-arrow:hover{gap:14px;color:var(--brass);border-color:var(--brass)}
+.link-arrow svg{width:16px;height:16px}
+
+/* ---- Categories ---- */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.cat{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:3/4;background:var(--panel);
+  display:flex;flex-direction:column;justify-content:flex-end;color:#fff;isolation:isolate;
+  transition:transform .4s var(--ease)}
+:root[data-cards="rounded"] .cat{border-radius:18px}
+.cat:hover{transform:translateY(-6px)}
+.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s var(--ease)}
+.cat:hover img{transform:scale(1.06)}
+.cat::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.62))}
+.cat .pad{padding:22px}
+.cat .c-n{font-family:var(--font-display);font-weight:700;font-size:21px}
+.cat .c-c{font-size:13.5px;opacity:.82;margin-top:3px;font-family:var(--font-stat);font-weight:600}
+
+/* ---- Listings ---- */
+.list-bar{display:flex;align-items:center;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.chip{padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--ink-2);transition:.2s;background:var(--paper-2)}
+.chip:hover{border-color:var(--ink)}
+.chip.active{background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
+.list-tools{margin-left:auto;display:flex;align-items:center;gap:14px;color:var(--muted);font-size:14px}
+.result-count{font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.toolbtn .result-count,.list-tools .toolbtn{white-space:nowrap}
+.toolbtn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);font-weight:500;background:var(--paper-2);transition:.2s}
+.toolbtn:hover{border-color:var(--ink)}
+.toolbtn svg{width:15px;height:15px}
+.toolbtn.live{color:var(--accent);border-color:color-mix(in oklab,var(--accent) 40%,var(--line))}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(20,18,12,.05),0 8px 22px rgba(20,18,12,.05);
+  transition:transform .35s var(--ease),box-shadow .35s,opacity .6s var(--ease)}
+:root[data-cards="rounded"] .card{border-radius:20px}
+.card:hover{transform:translateY(-5px);box-shadow:0 26px 50px rgba(20,18,12,.13)}
+.card .ph{position:relative;aspect-ratio:4/3;background:var(--panel);overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.card:hover .ph img{transform:scale(1.05)}
+.card .tags{position:absolute;top:14px;left:14px;display:flex;gap:7px}
+.tagb{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:999px;
+  background:rgba(250,248,243,.92);color:var(--ink);backdrop-filter:blur(6px)}
+.tagb.accent{background:var(--accent);color:var(--on-accent)}
+.fav{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(250,248,243,.86);backdrop-filter:blur(6px);transition:.2s}
+.fav:hover{background:#fff}.fav svg{width:17px;height:17px}
+.fav.on svg{fill:var(--accent);stroke:var(--accent)}
+.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card .price{font-family:var(--font-stat);font-weight:800;font-stretch:80%;font-size:28px;letter-spacing:-.01em;line-height:1;color:var(--brass)}
+.card .price .pm{font-size:14px;color:var(--muted);font-weight:600;margin-left:5px;font-stretch:normal}
+.card .ttl{font-family:var(--font-display);font-weight:600;font-size:17px;line-height:1.25}
+.card .loc{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:6px}
+.card .loc svg{width:14px;height:14px;flex:none}
+.card .specs{margin-top:auto;display:flex;gap:16px;border-top:1px solid var(--line);padding-top:14px;color:var(--ink-2);font-size:13.5px;font-weight:500}
+.card .specs span{display:flex;align-items:center;gap:6px}
+.card .specs svg{width:15px;height:15px;opacity:.6}
+
+/* skeleton */
+.skeleton .ph,.skeleton-line{background:linear-gradient(100deg,var(--panel) 30%,color-mix(in oklab,var(--panel) 55%,#fff) 50%,var(--panel) 70%);
+  background-size:200% 100%;animation:shimmer 1.3s linear infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+.sk .body{gap:14px}
+.skeleton-line{height:13px;border-radius:6px}
+.sk .price{height:24px;width:55%}
+.sk .ttl{height:15px;width:85%}
+.sk .loc{height:12px;width:60%}
+.sk .specs{border-top:1px solid var(--line);padding-top:14px;height:14px}
+
+/* empty state */
+.empty{grid-column:1/-1;text-align:center;padding:72px 20px;border:1.5px dashed var(--line);border-radius:var(--radius-lg);background:var(--paper-2)}
+.empty .ei{width:64px;height:64px;border-radius:50%;background:var(--panel);display:grid;place-items:center;margin:0 auto 20px;color:var(--accent)}
+.empty .ei svg{width:28px;height:28px}
+.empty h3{font-family:var(--font-display);font-weight:700;font-size:24px;margin-bottom:8px}
+.empty p{color:var(--muted);max-width:40ch;margin:0 auto 22px;text-wrap:pretty}
+.empty .btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper-2);padding:12px 22px;border-radius:999px;font-weight:600}
+.empty .btn svg{width:16px;height:16px}
+
+/* ---- Cities band ---- */
+.cities{background:var(--ink);color:var(--paper)}
+.cities .sec-head h2{color:var(--paper)}
+.cities .sec-head p{color:rgba(244,241,234,.6)}
+.cities .link-arrow{color:var(--paper);border-color:var(--paper)}
+.city-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(244,241,234,.12);border:1px solid rgba(244,241,234,.12);border-radius:var(--radius-lg);overflow:hidden}
+.city{background:var(--ink);padding:30px 28px;transition:.3s;position:relative;overflow:hidden;cursor:pointer}
+.city:hover{background:#23231f}
+.city .cn{font-family:var(--font-display);font-weight:700;font-size:26px}
+.city .cc{font-family:var(--font-stat);font-weight:800;font-stretch:75%;font-size:42px;color:var(--accent-soft);line-height:1;margin:14px 0 4px}
+.city .cl{color:rgba(244,241,234,.55);font-size:13.5px}
+.city .go{position:absolute;top:26px;right:26px;width:34px;height:34px;border-radius:50%;border:1px solid rgba(244,241,234,.2);display:grid;place-items:center;transition:.25s}
+.city:hover .go{background:var(--paper);color:var(--ink)}
+.city .go svg{width:15px;height:15px}
+
+/* ---- Value props ---- */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.value{padding:40px 36px 40px 36px;border-right:1px solid var(--line)}
+.value:last-child{border-right:none;padding-right:0;padding-left:36px}
+.value:first-child{padding-left:0}
+.value .vi{width:48px;height:48px;border-radius:12px;background:color-mix(in oklab,var(--accent) 12%,transparent);color:var(--accent);display:grid;place-items:center;margin-bottom:22px}
+.value .vi svg{width:23px;height:23px}
+.value h3{font-family:var(--font-display);font-weight:700;font-size:21px;margin-bottom:10px}
+.value p{color:var(--muted);font-size:15px;line-height:1.55;text-wrap:pretty}
+
+/* ---- CTA ---- */
+.cta{position:relative;border-radius:var(--radius-lg);overflow:hidden;color:#fff;padding:clamp(56px,8vw,96px) var(--gut);isolation:isolate}
+:root[data-cards="rounded"] .cta{border-radius:26px}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,rgba(20,22,18,.82),rgba(20,22,18,.35))}
+.cta h2{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,5vw,68px);line-height:.98;letter-spacing:-.02em;max-width:16ch;text-wrap:balance}
+.cta p{margin-top:18px;max-width:48ch;font-size:17px;color:rgba(255,255,255,.82);text-wrap:pretty}
+.cta .row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--paper-2);color:var(--ink);padding:15px 26px;border-radius:999px;font-weight:600;font-size:15.5px;transition:transform .2s var(--ease)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15.5px;transition:.2s}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn-primary svg,.btn-ghost svg{width:17px;height:17px}
+
+/* ---- Footer ---- */
+.foot{background:var(--paper);border-top:1px solid var(--line);padding:64px 0 34px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px}
+.foot .brand-mark{color:var(--ink);font-size:28px}
+.foot-blurb{color:var(--muted);font-size:15px;line-height:1.6;max-width:34ch;margin-top:18px;text-wrap:pretty}
+.foot-col h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:18px}
+.foot-col a{display:block;font-size:15px;color:var(--ink-2);padding:6px 0;transition:.2s}
+.foot-col a:hover{color:var(--ink);padding-left:4px}
+.foot-bot{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:26px;color:var(--muted);font-size:13.5px;flex-wrap:wrap}
+
+/* ---- Location modal ---- */
+.modal-bg{position:fixed;inset:0;z-index:100;background:rgba(16,16,13,.5);backdrop-filter:blur(6px);
+  display:grid;place-items:start center;padding:14vh 20px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-bg.open{opacity:1;pointer-events:auto}
+.modal{width:min(560px,100%);background:var(--paper-2);border-radius:18px;box-shadow:0 40px 90px rgba(0,0,0,.4);overflow:hidden;
+  transform:translateY(14px) scale(.98);transition:transform .3s var(--ease)}
+.modal-bg.open .modal{transform:none}
+.modal-h{padding:24px 26px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.modal-h h3{font-family:var(--font-display);font-weight:700;font-size:22px}
+.modal-h .x{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:.2s}
+.modal-h .x:hover{background:var(--panel);color:var(--ink)}
+.modal-body{padding:22px 26px 26px}
+.detect{width:100%;display:flex;align-items:center;gap:13px;padding:15px 18px;border-radius:12px;border:1px solid var(--line);
+  background:var(--paper);transition:.2s;margin-bottom:22px;text-align:left}
+.detect:hover{border-color:var(--accent)}
+.detect .di{width:40px;height:40px;border-radius:10px;background:color-mix(in oklab,var(--accent) 13%,transparent);color:var(--accent);display:grid;place-items:center;flex:none}
+.detect .di svg{width:19px;height:19px}
+.detect.loading .di svg{animation:spin 1s linear infinite}
+.detect .dt b{display:block;font-weight:600;font-size:15.5px}
+.detect .dt span{font-size:13px;color:var(--muted)}
+.modal-body .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:12px}
+.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.city-opt{padding:14px;border-radius:11px;border:1px solid var(--line);background:var(--paper);text-align:left;transition:.2s}
+.city-opt:hover{border-color:var(--ink)}
+.city-opt.sel{border-color:var(--accent);background:color-mix(in oklab,var(--accent) 8%,var(--paper))}
+.city-opt .con{font-weight:600;font-size:15px}
+.city-opt .coc{font-size:12.5px;color:var(--muted);margin-top:2px}
+
+/* ---- toast ---- */
+.toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);z-index:120;
+  background:var(--ink);color:var(--paper-2);padding:13px 22px;border-radius:999px;font-size:14.5px;font-weight:500;
+  box-shadow:0 14px 40px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:.3s var(--ease);display:flex;align-items:center;gap:10px}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.toast svg{width:17px;height:17px;color:var(--accent-soft)}
+
+/* suspend all transitions during a theme swap (prevents stuck var()-based paints) */
+:root.theme-switching *,
+:root.theme-switching *::before,
+:root.theme-switching *::after{transition:none !important}
+
+/* reveal — content always visible (entrance disabled for reliability) */
+.reveal{opacity:1;transform:none}
+
+/* ── Sharp edges everywhere (sharp mode) ──
+   Flattens every corner: pills, circular controls, cards, modals, avatars. */
+:root[data-cards="sharp"] *,
+:root[data-cards="sharp"] *::before,
+:root[data-cards="sharp"] *::after{ border-radius:0 !important; }
+
+/* ============================================================
+   BRAND LOGO MARK
+   ============================================================ */
+.brand{align-items:center}
+.logo-mark{width:26px;height:26px;flex:none;display:block;color:#fff;filter:drop-shadow(0 1px 8px rgba(8,12,14,.4))}
+.logo-mark svg{width:100%;height:100%;display:block}
+.foot-logo{display:flex;align-items:center;gap:12px}
+.foot-logo .logo-mark{width:32px;height:32px;color:var(--accent);filter:none}
+
+/* nav theme toggle */
+.theme-btn{width:44px;height:44px;border-radius:999px;display:grid;place-items:center;color:#fff;
+  transition:background .2s,transform .2s var(--ease);text-shadow:0 1px 10px rgba(8,12,14,.5)}
+.theme-btn:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+.theme-btn svg{width:19px;height:19px}
+
+/* ============================================================
+   DARK THEME
+   ============================================================ */
+:root[data-theme="dark"]{
+  --paper:#15160f;
+  --paper-2:#1d1e16;
+  --panel:#272820;
+  --ink:#f1ede2;
+  --ink-2:#cdc7b8;
+  --muted:#a39d8c;
+  --line:#34352b;
+  --accent:#90a384;
+  --accent-2:#6d7c66;
+  --accent-soft:#b6c2ac;
+  --on-accent:#15160f;
+  --brass:#d4a65f;
+  --brass-2:#e5ba74;
+  --brass-soft:rgba(212,166,95,.16);
+}
+:root[data-theme="dark"] body{background-color:var(--paper)}
+/* feature dark band stays dark, with light text */
+:root[data-theme="dark"] .cities{background:#0f100a;color:var(--ink)}
+:root[data-theme="dark"] .city{background:#0f100a}
+:root[data-theme="dark"] .city:hover{background:#191a11}
+:root[data-theme="dark"] .cities .sec-head h2{color:var(--ink)}
+:root[data-theme="dark"] .cities .sec-head p{color:var(--muted)}
+:root[data-theme="dark"] .cities .link-arrow{color:var(--ink);border-color:var(--ink)}
+:root[data-theme="dark"] .city .cl{color:rgba(241,237,226,.5)}
+:root[data-theme="dark"] .city-row{background:rgba(241,237,226,.1);border-color:rgba(241,237,226,.1)}
+:root[data-theme="dark"] .city .go{border-color:rgba(241,237,226,.22)}
+:root[data-theme="dark"] .city:hover .go{background:var(--ink);color:#0f100a}
+/* featured plan panel */
+:root[data-theme="dark"] .fx-plan{background:#0f100a}
+/* listing chips on photos */
+:root[data-theme="dark"] .tagb{background:rgba(18,19,13,.82);color:var(--ink)}
+:root[data-theme="dark"] .fav{background:rgba(18,19,13,.6);color:var(--ink)}
+:root[data-theme="dark"] .fav:hover{background:rgba(18,19,13,.85)}
+/* nav glass tuned for dark */
+:root[data-theme="dark"] .glass{background:rgba(28,30,20,.34);border-color:rgba(241,237,226,.18);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+
+/* ============================================================
+   NAV CONTRAST ON SCROLL (off the hero image)
+   ============================================================ */
+.nav-left,.btn-book,.theme-btn{transition:background .25s,color .25s,box-shadow .25s,border-color .25s,transform .2s var(--ease)}
+.nav.scrolled .nav-left,
+.nav.scrolled .btn-book,
+.nav.scrolled .theme-btn{
+  background:color-mix(in oklab,var(--paper-2) 90%,transparent);
+  border-color:var(--line);
+  box-shadow:0 6px 26px rgba(20,18,12,.14);
+}
+.nav.scrolled .brand-mark,
+.nav.scrolled .logo-mark,
+.nav.scrolled .nav-link,
+.nav.scrolled .theme-btn,
+.nav.scrolled .btn-book{color:var(--ink);text-shadow:none}
+.nav.scrolled .logo-mark{filter:none}
+.nav.scrolled .nav-link:hover{background:color-mix(in oklab,var(--ink) 8%,transparent)}
+.nav.scrolled .nav-link.active{background:var(--ink);color:var(--paper-2)}
+.nav.scrolled .theme-btn:hover{background:color-mix(in oklab,var(--ink) 8%,transparent)}
+.nav.scrolled .btn-book:hover{background:color-mix(in oklab,var(--ink) 8%,transparent)}
+.nav.scrolled .btn-book .pill-ic{background:var(--accent);color:var(--on-accent)}
+.nav.scrolled .brand-dot{background:var(--accent)}
+
+/* ============================================================
+   MOBILE APP TAB BAR  (shown on phones)
+   ============================================================ */
+.tabbar{display:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  min-height:52px;padding:7px 4px;color:var(--muted);font-size:10.5px;font-weight:600;letter-spacing:.01em}
+.tab .ti{display:grid;place-items:center}
+.tab .ti svg{width:23px;height:23px}
+.tab.active{color:var(--accent)}
+.tab.active .ti svg{stroke-width:2}
+/* central owner Post button */
+.tab-fab{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateY(-14px);color:var(--ink)}
+.tab-fab .fi{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:var(--brass);color:#fff;
+  box-shadow:0 10px 24px color-mix(in oklab,var(--brass) 45%,transparent);transition:transform .2s var(--ease)}
+:root[data-cards="sharp"] .tab-fab .fi{border-radius:0 !important}
+.tab-fab:active .fi{transform:scale(.94)}
+.tab-fab .fi svg{width:26px;height:26px}
+.tab-fab .fl{font-size:10.5px;font-weight:700;color:var(--brass)}
+
+/* CTA owner kicker */
+.cta-kick{display:inline-block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  color:rgba(255,255,255,.78);margin-bottom:16px}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1080px){
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .city-row{grid-template-columns:repeat(2,1fr)}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .featured{grid-template-columns:1fr}
+  .fx-plan{min-height:200px}
+}
+@media(max-width:860px){
+  /* native-app shell: bottom tab bar + compact top bar */
+  .tabbar{
+    display:flex;align-items:flex-end;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));
+    background:color-mix(in oklab,var(--paper-2) 93%,transparent);
+    backdrop-filter:blur(22px) saturate(150%);
+    -webkit-backdrop-filter:blur(22px) saturate(150%);
+    border-top:1px solid var(--line);
+    box-shadow:0 -6px 24px rgba(20,18,12,.1);
+  }
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  .nav{padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px}
+  .nav-links{display:none}
+  .nav-left{padding:8px 16px;flex:none}
+  .brand{margin-right:0}
+  .logo-mark{width:24px;height:24px}
+  .brand-mark{font-size:18px}
+
+  /* hero as an app cover */
+  .hero{min-height:100svh}
+  .theme-toggle{display:none}
+  .hero-annote,.hero-pricemark,.hero-nearby{display:none}
+  .hero-typefilter{top:calc(74px + env(safe-area-inset-top,0px));gap:7px}
+  .htf{height:42px;width:42px}
+  .htf.active .htf-l{max-width:120px}
+
+  /* search card spans the bottom, clears the tab bar */
+  .hero-search{left:14px;right:14px;width:auto;bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  .hs-toggle{margin-bottom:12px}
+  .hs-head h1{font-size:clamp(26px,7vw,34px)}
+  .hs-card{padding:20px 20px 22px}
+
+  /* sections: app rhythm */
+  section.block{padding:58px 0}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:30px}
+  .sec-head h2{font-size:clamp(28px,7.5vw,36px);max-width:none}
+  .sec-head p{font-size:15px}
+  .link-arrow{font-size:14px}
+
+  /* categories → swipeable carousel */
+  .cats{display:flex;gap:12px;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  .cats::-webkit-scrollbar{display:none}
+  .cat{flex:0 0 62%;max-width:280px;scroll-snap-align:start;aspect-ratio:4/5}
+  .cat:hover{transform:none}
+
+  /* featured → single stacked card */
+  .featured{grid-template-columns:1fr;border-radius:16px;overflow:hidden}
+  .fx-plan{min-height:230px;padding:24px}
+  .fx-plan-foot .pl-name{font-size:21px}
+  .fx-stats{padding:24px;gap:20px}
+  .fx-row{grid-template-columns:1fr 1fr;gap:22px 28px}
+  .fx-stat .v{font-size:clamp(26px,6.6vw,34px)}
+  .fx-foot{flex-direction:column;align-items:stretch;gap:18px;padding-top:18px}
+  .fx-type{margin-left:0;justify-content:space-between;width:100%}
+
+  /* one-up app lists */
+  .cats-wrap,.grid,.city-row{grid-template-columns:1fr}
+  .grid{gap:22px}
+  /* listings toolbar: count+sort on top, chips scroll edge-to-edge */
+  .list-bar{flex-direction:column;align-items:stretch;gap:14px;margin-bottom:22px}
+  .list-tools{margin-left:0;order:-1;justify-content:space-between;width:100%}
+  .list-filters{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;min-width:0;width:100%}
+  .list-filters::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto}
+  .card .ph{aspect-ratio:16/11}
+  .card .body{padding:16px 18px 18px}
+  .city-row{gap:1px}
+  .city{padding:24px 22px}
+
+  .values{grid-template-columns:1fr;border-top:none}
+  .value,.value:last-child{border-right:none;border-bottom:1px solid var(--line);padding:26px 0}
+  .value:last-child{border-bottom:none}
+
+  /* owner CTA stacks */
+  .cta .row{flex-direction:column}
+  .btn-primary,.btn-ghost{justify-content:center;width:100%}
+
+  /* footer + toast clear the tab bar */
+  .foot{padding-bottom:20px}
+  .toast{bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+
+  /* location picker → bottom sheet */
+  .modal-bg{place-items:end center;padding:0}
+  .modal{width:100%;border-radius:22px 22px 0 0;transform:translateY(100%)}
+  .modal-bg.open .modal{transform:none}
+  .city-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .grid,.city-row,.foot-top{grid-template-columns:1fr}
+  .search-body{grid-template-columns:1fr}
+  .fx-foot{flex-direction:column;align-items:stretch}
+  .fx-type{margin-left:0}
+  /* compact top bar: brand + controls only */
+  .bk-label{display:none}
+  .btn-book{padding:9px;gap:0}
+  .btn-book .pill-ic{width:30px;height:30px}
+  .nav-right{gap:8px}
+  .theme-btn{width:42px;height:42px}
+  .city-grid{grid-template-columns:1fr 1fr}
+  .cat{flex-basis:72%}
+}
+
+/* ============================================================
+   SERVICES HUB  (well-rounded offering, kept calm + uncluttered)
+   ============================================================ */
+.svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.svc-card{position:relative;display:flex;flex-direction:column;text-align:left;
+  padding:26px 22px 22px;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;overflow:hidden}
+:root[data-cards="rounded"] .svc-card{border-radius:16px}
+.svc-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(20,18,12,.1);border-color:var(--accent-soft)}
+.svc-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+  background:color-mix(in oklab,var(--accent) 12%,transparent);color:var(--accent);margin-bottom:18px}
+:root[data-cards="sharp"] .svc-ic{border-radius:0 !important}
+.svc-ic svg{width:22px;height:22px}
+.svc-card .sn{font-family:var(--font-display);font-weight:700;font-size:18px;line-height:1.15}
+.svc-card .sd{color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:8px;text-wrap:pretty;flex:1}
+.svc-card .sl{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:13px;font-weight:600;color:var(--ink-2);transition:gap .2s,color .2s}
+.svc-card .sl svg{width:15px;height:15px}
+.svc-card:hover .sl{gap:11px;color:var(--brass)}
+.svc-card .tagmini{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:3px 8px;border-radius:999px}
+:root[data-cards="sharp"] .svc-card .tagmini{border-radius:0 !important}
+
+/* contextual finance hint on listing cards */
+.card .emi-hint{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;transition:color .2s}
+.card .emi-hint svg{width:13px;height:13px;color:var(--accent)}
+.card .emi-hint b{color:var(--ink-2);font-weight:600}
+.card .emi-hint:hover{color:var(--ink-2)}
+.card .emi-hint:hover b{color:var(--brass)}
+
+/* ---- Home loan calculator modal ---- */
+.emi-modal{width:min(480px,100%)}
+/* fixed dark "receipt" panel — pinned colours so it never flips in dark theme */
+.emi-result{background:#1a1a17;color:#f4f1ea;border-radius:14px;padding:22px 24px;margin-bottom:22px;text-align:center}
+:root[data-theme="dark"] .emi-result{background:#0f100a}
+:root[data-cards="sharp"] .emi-result{border-radius:0 !important}
+.emi-r-lbl{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,234,.6);font-weight:600}
+.emi-r-val{font-family:var(--font-stat);font-weight:800;font-stretch:80%;font-size:42px;line-height:1;margin-top:8px;color:var(--brass-2)}
+.emi-r-sub{font-size:13px;color:rgba(244,241,234,.65);margin-top:8px;text-wrap:pretty}
+.emi-field{margin-bottom:16px}
+.emi-f-h{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;margin-bottom:9px;color:var(--ink-2);font-weight:500}
+.emi-f-h b{font-family:var(--font-stat);font-weight:800;font-stretch:85%;font-size:15px;color:var(--ink)}
+.emi-modal input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:999px;background:var(--line);outline:none}
+.emi-modal input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid var(--paper-2);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.emi-modal input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid var(--paper-2);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.emi-break{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 20px;padding-top:18px;border-top:1px solid var(--line)}
+.emi-b{display:flex;flex-direction:column;gap:3px}
+.emi-b .k{font-size:12px;color:var(--muted)}
+.emi-b .v{font-family:var(--font-stat);font-weight:800;font-stretch:85%;font-size:18px;color:var(--ink)}
+.emi-cta{width:100%;padding:14px;background:var(--brass);color:#fff;font-weight:700;font-size:14.5px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:9px;transition:.2s}
+:root[data-cards="sharp"] .emi-cta{border-radius:0 !important}
+.emi-cta:hover{background:var(--brass-2)}
+.emi-cta svg{width:16px;height:16px}
+
+/* tabs (two tools, one screen) */
+.emi-tabs{display:flex;gap:4px;padding:4px;background:var(--panel);border-radius:11px;margin-bottom:18px}
+:root[data-cards="sharp"] .emi-tabs{border-radius:0 !important}
+.emi-tab{flex:1;padding:9px 8px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);transition:.2s}
+:root[data-cards="sharp"] .emi-tab{border-radius:0 !important}
+.emi-tab.active{background:var(--paper-2);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* progressive lead capture */
+.emi-foot{margin-top:2px}
+.emi-trust{display:flex;align-items:flex-start;gap:7px;font-size:11.5px;color:var(--muted);margin-bottom:12px;line-height:1.45;text-wrap:pretty}
+.emi-trust svg{width:14px;height:14px;color:var(--accent);flex:none;margin-top:1px}
+.emi-cap-row{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px;background:var(--paper)}
+:root[data-cards="sharp"] .emi-cap-row{border-radius:0 !important}
+.emi-cap-row:focus-within{border-color:var(--accent)}
+.emi-cc{display:flex;align-items:center;padding:0 13px;font-weight:700;font-size:15px;color:var(--ink-2);background:var(--panel);border-right:1px solid var(--line)}
+.emi-cap-row input{flex:1;min-width:0;border:0;background:transparent;padding:14px;font:inherit;font-size:16px;letter-spacing:.06em;color:var(--ink);outline:none}
+.emi-cap-row input.err{color:#c0392b}
+.emi-cap .emi-trust{margin:10px 0 0}
+.emi-done{display:flex;align-items:flex-start;gap:13px;padding:16px 18px;border-radius:12px;
+  background:color-mix(in oklab,var(--accent) 12%,var(--paper-2));border:1px solid color-mix(in oklab,var(--accent) 30%,var(--line))}
+:root[data-cards="sharp"] .emi-done{border-radius:0 !important}
+.emi-done-ic{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;flex:none}
+.emi-done-ic svg{width:18px;height:18px}
+.emi-done b{display:block;font-size:15px;font-weight:700;margin-bottom:3px}
+.emi-done span{font-size:13px;color:var(--muted);line-height:1.45}
+
+/* keep tall modals (offers list) inside the viewport */
+.modal{display:flex;flex-direction:column;max-height:88vh}
+.modal-h{flex:none}
+.modal-body{overflow-y:auto;min-height:0}
+
+/* ---- Best offers (score + consent-gated bank matching) ---- */
+.emi-lead{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:18px;text-wrap:pretty}
+.emi-lead b{color:var(--ink-2);font-weight:600}
+.of-form{display:flex;flex-direction:column}
+.of-l{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;font-weight:600;color:var(--ink-2);margin:14px 0 7px}
+.of-l:first-child{margin-top:0}
+.of-l b{font-family:var(--font-stat);font-weight:800;font-stretch:85%;color:var(--ink)}
+.of-in{height:46px;border:1px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);outline:none}
+:root[data-cards="sharp"] .of-in{border-radius:0 !important}
+.of-in:focus{border-color:var(--accent)}
+.of-seg{display:flex;gap:6px}
+.of-seg button{flex:1;padding:11px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--muted);background:var(--paper);transition:.2s}
+:root[data-cards="sharp"] .of-seg button{border-radius:0 !important}
+.of-seg button.active{border-color:var(--accent);color:var(--ink);background:color-mix(in oklab,var(--accent) 8%,var(--paper))}
+.of-consent{display:flex;align-items:flex-start;gap:10px;margin:18px 0 16px;font-size:12.5px;color:var(--muted);line-height:1.45;cursor:pointer}
+.of-consent input{margin-top:1px;width:18px;height:18px;flex:none;accent-color:var(--accent)}
+.of-consent svg{width:13px;height:13px;color:var(--accent);display:inline;vertical-align:-2px}
+.emi-cta[disabled]{opacity:.45;pointer-events:none}
+.of-score{background:var(--panel);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+:root[data-cards="sharp"] .of-score{border-radius:0 !important}
+.of-score-h{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);font-weight:600}
+.of-soft{display:flex;align-items:center;gap:5px;color:var(--accent);font-weight:600}
+.of-soft svg{width:12px;height:12px}
+.of-score-row{display:flex;align-items:baseline;gap:12px;margin:9px 0 10px}
+.of-score-num{font-family:var(--font-stat);font-weight:800;font-stretch:80%;font-size:38px;line-height:1;color:var(--ink)}
+.of-score-num span{font-size:14px;color:var(--muted);font-weight:600;margin-left:4px;font-stretch:normal}
+.of-score-band{font-weight:700;font-size:13.5px;padding:4px 13px;border-radius:999px}
+:root[data-cards="sharp"] .of-score-band{border-radius:0 !important}
+.of-band-excellent{background:color-mix(in oklab,#2e7d4f 20%,transparent);color:#2e7d4f}
+.of-band-verygood{background:color-mix(in oklab,#3a7d6f 20%,transparent);color:#357a6c}
+.of-band-good{background:var(--brass-soft);color:var(--brass)}
+.of-band-fair{background:color-mix(in oklab,#b06b2f 18%,transparent);color:#b06b2f}
+.of-bar{height:6px;border-radius:999px;background:color-mix(in oklab,var(--ink) 10%,transparent);overflow:hidden}
+.of-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),var(--accent))}
+.of-list-h{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:12px}
+.of-list-h span{color:var(--muted);font-weight:500}
+.of-list{display:flex;flex-direction:column;gap:10px}
+.of-row{border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:border-color .2s,background .2s}
+:root[data-cards="sharp"] .of-row{border-radius:0 !important}
+.of-row.picked{border-color:var(--accent);background:color-mix(in oklab,var(--accent) 6%,var(--paper-2))}
+.of-row-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.of-bank{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700;font-size:15px;color:var(--ink)}
+.of-best{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);padding:3px 8px;border-radius:999px}
+:root[data-cards="sharp"] .of-best{border-radius:0 !important}
+.of-rate{font-family:var(--font-stat);font-weight:800;font-stretch:85%;font-size:21px;color:var(--brass);white-space:nowrap;line-height:1}
+.of-rate span{font-size:11px;color:var(--muted);font-weight:600;margin-left:3px;font-stretch:normal}
+.of-meta{font-size:12.5px;color:var(--muted);margin-top:7px}
+.of-pick{display:flex;align-items:center;gap:9px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.of-pick input{width:18px;height:18px;flex:none;accent-color:var(--accent)}
+.of-foot{margin-top:16px}
+
+/* next-step hand-off — ladders one module into the next without clutter */
+.emi-next{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;padding:12px;
+  background:transparent;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--ink-2);transition:.2s}
+:root[data-cards="sharp"] .emi-next{border-radius:0 !important}
+.emi-next:hover{border-color:var(--accent);color:var(--ink)}
+.emi-next svg{width:15px;height:15px}
+
+/* ---- Legal & Title (Module 2) ---- */
+.lg-types{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.lg-type{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);background:var(--paper);transition:.2s}
+:root[data-cards="sharp"] .lg-type{border-radius:0 !important}
+.lg-type svg{width:15px;height:15px}
+.lg-type.active{border-color:var(--accent);color:var(--ink);background:color-mix(in oklab,var(--accent) 8%,var(--paper))}
+.lg-content{display:flex;flex-direction:column;gap:16px;margin-bottom:18px}
+.lg-h{display:flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:700;color:var(--ink-2);margin-bottom:11px}
+.lg-h svg{width:15px;height:15px;color:var(--accent)}
+.lg-docs,.lg-flags ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.lg-docs li,.lg-flags li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.lg-docs li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:6px;flex:none}
+.lg-flags{background:var(--brass-soft);border:1px solid color-mix(in oklab,var(--brass) 22%,var(--line));border-radius:12px;padding:15px 16px}
+:root[data-cards="sharp"] .lg-flags{border-radius:0 !important}
+.lg-flags .lg-h,.lg-flags .lg-h svg{color:var(--brass)}
+.lg-flags li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brass);margin-top:6px;flex:none}
+.lg-offer{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;background:var(--paper-2)}
+:root[data-cards="sharp"] .lg-offer{border-radius:0 !important}
+.lg-offer-t{font-weight:700;font-size:14.5px;color:var(--ink)}
+.lg-offer-s{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+.lg-price{font-family:var(--font-stat);font-weight:800;font-stretch:85%;font-size:24px;color:var(--brass);white-space:nowrap}
+
+/* ---- Build & Renovate (Module 3) — reuses .of-seg, .emi-*, .lg-offer ---- */
+.bd-seg{margin-bottom:10px}
+.bd-seg:last-of-type{margin-bottom:18px}
+
+/* ---- Interiors (Module 4) — multi-select space chips ---- */
+.in-label{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:700;color:var(--ink-2);margin:0 0 11px}
+.in-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.in-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 14px 9px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);background:var(--paper);transition:.2s}
+:root[data-cards="sharp"] .in-chip{border-radius:0 !important}
+.in-chip::before{content:"";width:15px;height:15px;border-radius:50%;border:1.5px solid var(--line);flex:none;transition:.2s}
+.in-chip.active{border-color:var(--accent);color:var(--ink);background:color-mix(in oklab,var(--accent) 8%,var(--paper))}
+.in-chip.active::before{background:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 3px var(--paper-2)}
+
+@media(max-width:1080px){ .svc-grid{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:860px){
+  /* services → swipeable carousel, matching the categories pattern */
+  .svc-grid{display:flex;gap:12px;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  .svc-grid::-webkit-scrollbar{display:none}
+  .svc-card{flex:0 0 68%;max-width:300px;scroll-snap-align:start}
+  .svc-card:hover{transform:none}
+}
+@media(max-width:560px){ .svc-card{flex-basis:80%} }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-left glass">
+    <a class="brand" href="#"><span class="logo-mark" id="logoMark"></span><span class="brand-mark" id="brandMark"></span><span class="brand-dot"></span></a>
+    <nav class="nav-links" id="navLinks"></nav>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn glass" id="themeBtn" aria-label="Toggle light or dark theme"></button>
+    <button class="btn-book glass">
+      <span class="bk-label">Post a Listing</span>
+      <span class="pill-ic" id="bookIc"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE APP TAB BAR -->
+<nav class="tabbar" id="tabbar" aria-label="Primary"></nav>
+
+<!-- HERO -->
+<section class="hero" id="top" data-screen-label="Hero">
+  <div class="hero-media" id="heroImg"></div>
+  <div class="hero-fallback"></div>
+  <div class="hero-scrim"></div>
+
+  <!-- top-center property type filter -->
+  <div class="hero-typefilter" id="heroTypeFilter"></div>
+
+  <!-- top-left annotation -->
+  <div class="hero-annote">
+    <span class="anno-ic" id="annoIc"></span>
+    <div class="anno-tx"><div class="a1">Featured estate</div><div class="a2">Whitefield, Bangalore</div></div>
+  </div>
+
+  <!-- price annotation marker -->
+  <div class="hero-pricemark">
+    <span class="pm-dot" id="pmDot"></span>
+    <div class="pm-line"></div>
+    <div class="pm-info"><div class="pm-price">₹4.2 Cr</div><div class="pm-code">Listing 047</div></div>
+  </div>
+
+  <div class="theme-toggle glass">
+    <button id="themeMoon" aria-label="Dark hero"></button>
+    <button id="themeSun" class="on" aria-label="Light hero"></button>
+  </div>
+
+  <!-- bottom-left search card -->
+  <div class="hero-search">
+    <div class="hs-toggle">
+      <button class="hsg active" data-mode="buy" id="hsgBuy"><span class="hsg-ic" id="hsBuyIc"></span> Buy</button>
+      <button class="hsg" data-mode="rent" id="hsgRent"><span class="hsg-ic" id="hsRentIc"></span> Rent</button>
+      <button class="hsg-go" id="hsToggleGo" aria-label="Search"></button>
+    </div>
+    <div class="hs-card">
+      <button class="hs-loc" id="locInput"><span class="hs-loc-ic" id="hsLocIc"></span><b id="hsLocText">Bangalore</b><span class="hs-loc-caret" id="hsLocCaret"></span></button>
+      <div class="hs-head">
+        <h1>Find nearby<br>luxury estates</h1>
+        <button class="geo" id="geoBtn" title="Detect my location"></button>
+      </div>
+      <p class="hs-sub">Curated, verified residences across India.</p>
+      <div class="hs-chips" id="heroChips"></div>
+      <button class="hs-search" id="searchGo"></button>
+    </div>
+  </div>
+
+  <!-- bottom-right nearby card -->
+  <button class="hero-nearby" id="heroNearby" aria-label="Nearby listing"></button>
+</section>
+
+<!-- FEATURED SPLIT PANEL -->
+<section class="featured" data-screen-label="Featured project">
+  <div class="fx-plan">
+    <div class="blueprint"></div>
+    <div class="fx-plan-top">
+      <span class="fx-tag" id="fxTag"></span>
+    </div>
+    <div class="fx-plan-foot">
+      <div class="pl-name" id="fxName"></div>
+      <div class="pl-loc" id="fxLoc"></div>
+    </div>
+  </div>
+  <div class="fx-stats">
+    <div class="fx-row" id="fxStats"></div>
+    <div class="fx-foot">
+      <div class="fx-nav">
+        <button id="fxNavL" aria-label="Previous"></button>
+        <button id="fxNavR" aria-label="Next"></button>
+      </div>
+      <div class="fx-type">
+        <div class="lbl"><div class="t1">House Type C</div><div class="t2">- Comfort Line</div></div>
+        <div class="fx-thumbs" id="fxThumbs"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="block" data-screen-label="Categories">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Browse by type</div>
+        <h2>Find the shape of your next home</h2>
+      </div>
+      <a class="link-arrow" href="#listings">All categories <span id="catArrow"></span></a>
+    </div>
+    <div class="cats" id="cats"></div>
+  </div>
+</section>
+
+<!-- LISTINGS -->
+<section class="block" id="listings" data-screen-label="Listings" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Featured in <span id="listCity">Bangalore</span></div>
+        <h2>Homes worth coming home to</h2>
+      </div>
+      <p>Title-verified, advisor-reviewed residences.</p>
+    </div>
+
+    <div class="list-bar">
+      <div class="list-filters" id="listFilters" style="display:flex;gap:10px;flex-wrap:wrap"></div>
+      <div class="list-tools">
+        <span class="result-count" id="resultCount"></span>
+        <button class="toolbtn" id="sortBtn"><span id="sortIc"></span><span id="sortLabel">Newest</span></button>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section class="block cities" data-screen-label="Cities">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px;color:rgba(244,241,234,.55)">Where Nyvasa lives</div>
+        <h2>Eight cities. One standard.</h2>
+      </div>
+      <a class="link-arrow" href="#">View all cities <span id="cityArrow"></span></a>
+    </div>
+    <div class="city-row" id="cityRow"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="block services" id="services" data-screen-label="Services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Beyond the keys</div>
+        <h2>Everything your home needs, in one place</h2>
+      </div>
+      <p>Financing, legal, construction, interiors and moving - vetted partners, under one trusted roof.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="block" data-screen-label="Why Nyvasa">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">The Nyvasa difference</div>
+        <h2>Buying a home, without the guesswork</h2>
+      </div>
+      <p>We rebuilt the journey around trust.</p>
+    </div>
+    <div class="values" id="values"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="block" id="sell" data-screen-label="CTA" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="ctaMedia" id="ctaMedia" style="position:absolute;inset:0;z-index:-2"></div>
+      <span class="cta-kick">For owners</span>
+      <h2>List your property in minutes.</h2>
+      <p>Reach verified buyers across India. Free to list, with an advisor on every enquiry.</p>
+      <div class="row">
+        <a class="btn-primary" id="ctaBtn1" href="#"></a>
+        <a class="btn-ghost" id="ctaBtn2" href="#"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot" data-screen-label="Footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand-col">
+        <span class="foot-logo"><span class="logo-mark" id="footLogo"></span><span class="brand-mark" id="footBrand"></span></span>
+        <p class="foot-blurb">Curated, verified residences across India. Built for people who would rather choose well than choose fast.</p>
+      </div>
+      <div class="foot-cols" id="footCols" style="display:contents"></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Nyvasa Homes Pvt. Ltd. All rights reserved.</span>
+      <span style="display:flex;gap:22px">
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">RERA disclosures</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- LOCATION MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal" role="dialog" aria-label="Choose location">
+    <div class="modal-h">
+      <h3>Where are you looking?</h3>
+      <button class="x" id="modalX" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <button class="detect" id="detectBtn">
+        <span class="di" id="detectIc"></span>
+        <span class="dt" id="detectTxt"><b>Use my current location</b><span>We'll suggest homes near you</span></span>
+      </button>
+      <div class="lbl">Popular cities</div>
+      <div class="city-grid" id="cityGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOME LOAN MODAL (Module 1) -->
+<div class="modal-bg" id="emiBg">
+  <div class="modal emi-modal" role="dialog" aria-label="Home loan">
+    <div class="modal-h">
+      <h3 id="emiTitle">Home loan</h3>
+      <button class="x" id="emiX" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="emi-tabs" id="emiTabs">
+        <button class="emi-tab active" data-mode="emi">EMI</button>
+        <button class="emi-tab" data-mode="elig">Eligibility</button>
+        <button class="emi-tab" data-mode="offers">Best offers</button>
+      </div>
+      <div id="emiCalcView">
+        <div class="emi-result">
+          <div class="emi-r-lbl" id="emiRLbl"></div>
+          <div class="emi-r-val" id="emiOut">-</div>
+          <div class="emi-r-sub" id="emiSub"></div>
+        </div>
+        <div class="emi-fields" id="emiFields"></div>
+        <div class="emi-break" id="emiBreak"></div>
+        <div class="emi-foot" id="emiFoot"></div>
+      </div>
+      <div id="emiOffersView" hidden></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL & TITLE MODAL (Module 2) -->
+<div class="modal-bg" id="legalBg">
+  <div class="modal emi-modal legal-modal" role="dialog" aria-label="Legal and title verification">
+    <div class="modal-h">
+      <h3>Legal &amp; Title</h3>
+      <button class="x" id="legalX" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <p class="emi-lead">Get the exact documents and checks for your purchase - then have a property lawyer verify the title. The <b>checklist is free</b>.</p>
+      <div class="lg-types" id="lgTypes"></div>
+      <div class="lg-content" id="lgContent"></div>
+      <div class="emi-foot" id="lgFoot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BUILD & RENOVATE MODAL (Module 3) -->
+<div class="modal-bg" id="buildBg">
+  <div class="modal emi-modal" role="dialog" aria-label="Build and renovate estimator">
+    <div class="modal-h">
+      <h3>Build &amp; Renovate</h3>
+      <button class="x" id="buildX" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="emi-result">
+        <div class="emi-r-lbl" id="bdLbl">Estimated build cost</div>
+        <div class="emi-r-val" id="bdOut">-</div>
+        <div class="emi-r-sub" id="bdSub"></div>
+      </div>
+      <div class="of-seg bd-seg" id="bdScope">
+        <button type="button" class="active" data-scope="build">New build</button>
+        <button type="button" data-scope="reno">Renovation</button>
+      </div>
+      <div class="of-seg bd-seg" id="bdTier">
+        <button type="button" data-tier="essential">Essential</button>
+        <button type="button" class="active" data-tier="premium">Premium</button>
+        <button type="button" data-tier="luxury">Luxury</button>
+      </div>
+      <div class="emi-field">
+        <div class="emi-f-h"><span>Built-up area</span><b id="bdAreaLbl"></b></div>
+        <input type="range" id="bdArea" min="500" max="10000" step="100">
+      </div>
+      <div class="emi-break" id="bdBreak"></div>
+      <div class="emi-foot" id="bdFoot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERIORS MODAL (Module 4) -->
+<div class="modal-bg" id="interiorBg">
+  <div class="modal emi-modal" role="dialog" aria-label="Interiors estimator">
+    <div class="modal-h">
+      <h3>Interiors</h3>
+      <button class="x" id="interiorX" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="emi-result">
+        <div class="emi-r-lbl" id="inLbl">Estimated interiors cost</div>
+        <div class="emi-r-val" id="inOut">-</div>
+        <div class="emi-r-sub" id="inSub"></div>
+      </div>
+      <div class="of-seg bd-seg" id="inBhk">
+        <button type="button" data-bhk="1">1 BHK</button>
+        <button type="button" class="active" data-bhk="2">2 BHK</button>
+        <button type="button" data-bhk="3">3 BHK</button>
+        <button type="button" data-bhk="4">4 BHK</button>
+      </div>
+      <div class="of-seg bd-seg" id="inTier">
+        <button type="button" data-tier="essential">Essential</button>
+        <button type="button" class="active" data-tier="premium">Premium</button>
+        <button type="button" data-tier="luxury">Luxury</button>
+      </div>
+      <div class="in-label">Spaces to design</div>
+      <div class="in-chips" id="inRooms">
+        <button type="button" class="in-chip" data-room="kitchen">Modular kitchen</button>
+        <button type="button" class="in-chip" data-room="wardrobes">Wardrobes</button>
+        <button type="button" class="in-chip" data-room="living">Living &amp; TV unit</button>
+        <button type="button" class="in-chip" data-room="ceiling">False ceiling &amp; paint</button>
+        <button type="button" class="in-chip" data-room="bath">Bathroom upgrades</button>
+      </div>
+      <div class="emi-break" id="inBreak"></div>
+      <div class="emi-foot" id="inFoot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MOVE & MANAGE MODAL (Module 5) -->
+<div class="modal-bg" id="mmBg">
+  <div class="modal emi-modal" role="dialog" aria-label="Move and manage">
+    <div class="modal-h">
+      <h3>Move &amp; Manage</h3>
+      <button class="x" id="mmX" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="of-seg bd-seg" id="mmMode">
+        <button type="button" class="active" data-mode="move">Move home</button>
+        <button type="button" data-mode="manage">Manage property</button>
+      </div>
+      <div id="mmBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span></span></div>
+
+<!-- inject small icons that need to be set after load -->
+<script>
+  window.addEventListener('DOMContentLoaded',()=>{
+    const set=(id,svg)=>{const e=document.getElementById(id);if(e)e.innerHTML=svg;};
+    // these reference icons defined in app.js after it loads; use a tiny delay
+    requestAnimationFrame(()=>{
+      if(window.I){
+        set('catArrow',I.arrow);set('cityArrow',I.arrow);
+        set('sortIc',I.filter);
+      }
+    });
+  });
+</script>
+
+<script>
+/* ============================================================
+   NIVASA — data + interactivity (vanilla)
+   ============================================================ */
+
+/* ---------- Image helpers (Unsplash + graceful fallback) ---------- */
+const IMG = {
+  hero:        'photo-1580587771525-78b9dba3b914',
+  villa:       'photo-1600596542815-ffad4c1539a9',
+  apt:         'photo-1545324418-cc1a3fa10c00',
+  plot:        'photo-1500382017468-9049fed747ef',
+  penthouse:   'photo-1567496898669-ee935f5f647a',
+  farmhouse:   'photo-1416331108676-a22ccb276e35',
+  l1:          'photo-1568605114967-8130f3a36994',
+  l2:          'photo-1512917774080-9991f1c4c750',
+  l3:          'photo-1613490493576-7fde63acd811',
+  l4:          'photo-1564013799919-ab600027ffc6',
+  l5:          'photo-1600585154340-be6161a56a0c',
+  l6:          'photo-1570129477492-45c003edd2be',
+  cta:         'photo-1600607687939-ce8a6c25118c',
+  f1:          'photo-1600566753086-00f18fb6b3ea',
+  f2:          'photo-1605276374104-dee2a0ed3cd6',
+  // Udupi apartments
+  sairadha:    'photo-1560448204-e02f11c3d0e2',
+  grasslands:  'photo-1493809842364-78817add7ffb',
+  mandavi:     'photo-1502672260266-1c1ef2d93688',
+  // hotels & resorts
+  resort:      'photo-1571896349842-33c89424de2d',
+  hotel:       'photo-1566073771259-6a8506099945',
+  beachresort: 'photo-1520250497591-112f2f40a3f4',
+};
+const FALLBACKS = [
+  'linear-gradient(150deg,#8aa0b1,#586c61 60%,#36433a)',
+  'linear-gradient(150deg,#c9b79b,#9c8362 60%,#5f4f3a)',
+  'linear-gradient(150deg,#9fb0a6,#6d7d72 55%,#3b463d)',
+  'linear-gradient(150deg,#b8c2cc,#7d8c98 60%,#4a5560)',
+];
+function uns(id, w){ return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w||900}&q=80`; }
+function imgEl(key, w, alt){
+  const i = document.createElement('img');
+  i.src = uns(IMG[key], w); i.alt = alt||''; i.loading='lazy';
+  i.dataset.fb = FALLBACKS[(Math.abs(hash(key))) % FALLBACKS.length];
+  i.onerror = () => { i.style.display='none'; if(i.parentElement) i.parentElement.style.background = i.dataset.fb; };
+  return i;
+}
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h;}
+
+/* ---------- Cities ---------- */
+const CITIES = [
+  {name:'Bangalore', region:'Karnataka', count:'1,240'},
+  {name:'Udupi',     region:'Karnataka', count:'186'},
+  {name:'Mumbai',    region:'Maharashtra', count:'2,090'},
+  {name:'Goa',       region:'Goa', count:'412'},
+  {name:'Pune',      region:'Maharashtra', count:'968'},
+  {name:'Chennai',   region:'Tamil Nadu', count:'1,015'},
+  {name:'Hyderabad', region:'Telangana', count:'1,302'},
+  {name:'Kochi',     region:'Kerala', count:'524'},
+  {name:'Mysuru',    region:'Karnataka', count:'288'},
+];
+
+/* ---------- Listings ---------- */
+const LISTINGS = [
+  {img:'l1', price:'₹4.2', unit:'Cr', tag:'New', accent:true, ttl:'Courtyard House, Whitefield', loc:'Whitefield, Bangalore', beds:4, baths:5, area:'3,800', city:'Bangalore', type:'Villa'},
+  {img:'l2', price:'₹2.85', unit:'Cr', tag:'Verified', ttl:'The Banyan Residences', loc:'Indiranagar, Bangalore', beds:3, baths:3, area:'2,150', city:'Bangalore', type:'Apartment'},
+  {img:'l3', price:'₹6.5', unit:'Cr', tag:'Sea View', ttl:'Malpe Cliff Villa', loc:'Malpe, Udupi', beds:5, baths:6, area:'5,200', city:'Udupi', type:'Villa'},
+  {img:'l4', price:'₹1.95', unit:'Cr', tag:'New', accent:true, ttl:'Laurel Court Penthouse', loc:'Koramangala, Bangalore', beds:3, baths:4, area:'2,640', city:'Bangalore', type:'Penthouse'},
+  {img:'l5', price:'₹3.4', unit:'Cr', tag:'Verified', ttl:'Heritage Plot - Manipal', loc:'Manipal, Udupi', beds:0, baths:0, area:'8,000', city:'Udupi', type:'Plot'},
+  {img:'l6', price:'₹5.1', unit:'Cr', tag:'Featured', accent:true, ttl:'Skyline Duplex 21', loc:'HSR Layout, Bangalore', beds:4, baths:4, area:'3,200', city:'Bangalore', type:'Apartment'},
+  {img:'sairadha', price:'₹1.45', unit:'Cr', tag:'New', accent:true, ttl:'Sai Radha Heights', loc:'Kunjibettu, Udupi', beds:3, baths:3, area:'1,860', city:'Udupi', type:'Apartment'},
+  {img:'grasslands', price:'₹1.1', unit:'Cr', tag:'New', ttl:'Grasslands Greens', loc:'Manipal, Udupi', beds:2, baths:2, area:'1,340', city:'Udupi', type:'Apartment'},
+  {img:'mandavi', price:'₹1.78', unit:'Cr', tag:'Verified', ttl:'Mandavi Riviera', loc:'Court Road, Udupi', beds:3, baths:3, area:'2,050', city:'Udupi', type:'Apartment'},
+  {img:'beachresort', price:'₹18.5', unit:'Cr', tag:'Hospitality', accent:true, ttl:'Malpe Beach Resort', loc:'Malpe, Udupi', beds:24, baths:26, area:'62 cents', city:'Udupi', type:'Hotel & Resort'},
+  {img:'resort', price:'₹32', unit:'Cr', tag:'Featured', ttl:'Kaup Backwater Retreat', loc:'Kaup, Udupi', beds:40, baths:42, area:'1.4 acres', city:'Udupi', type:'Hotel & Resort'},
+  {img:'hotel', price:'₹12.8', unit:'Cr', tag:'New', ttl:'The Manipal Boutique Hotel', loc:'Tiger Circle, Manipal', beds:32, baths:34, area:'38 cents', city:'Udupi', type:'Hotel & Resort'},
+];
+
+/* ---------- Featured carousel ---------- */
+const FEATURED = [
+  {name:'Courtyard House - Vista Line', loc:'Whitefield, Bangalore', completion:'Q4 2026', plot:'30', area:'4,200', price:'₹4.2', unit:'Cr', thumbs:['l1','villa']},
+  {name:'Malpe Cliff Villa - Shore Line', loc:'Malpe, Udupi', completion:'Q2 2027', plot:'52', area:'6,100', price:'₹6.5', unit:'Cr', thumbs:['l3','l4']},
+  {name:'Malpe Beach Resort - Shoreline', loc:'Malpe, Udupi', completion:'Ready', plot:'62', area:'24,000', price:'₹18.5', unit:'Cr', thumbs:['beachresort','resort']},
+  {name:'Skyline Duplex - Crest Line', loc:'HSR Layout, Bangalore', completion:'Ready', plot:'20', area:'3,200', price:'₹5.1', unit:'Cr', thumbs:['l6','l2']},
+];
+
+const CATEGORIES = [
+  {n:'Villas', c:'820 homes', img:'villa'},
+  {n:'Apartments', c:'3,140 homes', img:'apt'},
+  {n:'Hotels & Resorts', c:'95 properties', img:'resort'},
+  {n:'Plots & Land', c:'640 listings', img:'plot'},
+];
+
+const TABS = [
+  {id:'buy', label:'Buy', cnt:'8.2k'},
+  {id:'rent', label:'Rent', cnt:'3.1k'},
+  {id:'stays', label:'Hotels', cnt:'95'},
+  {id:'plots', label:'Plots', cnt:'640'},
+  {id:'commercial', label:'Commercial', cnt:'910'},
+];
+
+/* ---------- Services (the well-rounded offering) ---------- */
+const SERVICES = [
+  {ic:'rupee',   n:'Home Loans',       d:'Compare offers from 20+ banks, check eligibility and lock the lowest EMI.', a:'Calculate EMI',   tag:'Popular', action:'emi'},
+  {ic:'doc',     n:'Legal & Title',    d:'Title verification, document vetting and registration, handled end to end.', a:'Get a title check', action:'legal'},
+  {ic:'compass', n:'Build & Renovate', d:'Architects and turnkey contractors on transparent, fixed-cost packages.',  a:'Plan a build',    action:'build'},
+  {ic:'sofa',    n:'Interiors',        d:'Modular kitchens, furniture and full-home interiors from vetted studios.',  a:'Design my home',  action:'interiors'},
+  {ic:'truck',   n:'Move & Manage',    d:'Packers, movers and tenant management for a handover without the headache.', a:'Arrange a move',  action:'movemanage'},
+];
+
+/* ============================================================
+   ICONS
+   ============================================================ */
+const I = {
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  caret:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>',
+  cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>',
+  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>',
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>',
+  geo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v3M12 19v3M22 12h-3M5 12H2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  left:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg>',
+  right:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>',
+  key:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3M16 7l3 3M14 9l2 2"/></svg>',
+  ruler:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12 12 3l9 9-9 9z"/><path d="M7.5 7.5l1.5 1.5M10.5 10.5l1.5 1.5M13.5 13.5l1.5 1.5"/></svg>',
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11 12 4l8 7M6 9.5V20h12V9.5"/></svg>',
+  rupee:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 4h10M7 8h10M7 8c5 0 5 7 0 7M13 15l5 5"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20S4 14.5 4 8.8A4.3 4.3 0 0 1 12 6a4.3 4.3 0 0 1 8 2.8C20 14.5 12 20 12 20Z"/></svg>',
+  bed:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 14h18M7 9V6.5"/></svg>',
+  bath:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3ZM6 11V6a2 2 0 0 1 4 0M7 21l-1 1M18 21l1 1"/></svg>',
+  area:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></svg>',
+  eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M5.6 5.6l3 3M15.4 15.4l3 3M18.4 5.6l-3 3M8.6 15.4l-3 3"/></svg>',
+  filter:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h18M6 12h12M10 19h4"/></svg>',
+  refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v4h-4"/></svg>',
+  ghost:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 21V9a7 7 0 0 1 14 0v12l-2.5-2-2.5 2-2.5-2-2 2-2.5-2L5 21Z"/><circle cx="9.5" cy="10" r="1" fill="currentColor"/><circle cx="14.5" cy="10" r="1" fill="currentColor"/></svg>',
+  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-11"/></svg>',
+  moon2:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>',
+  sun2:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.1 5.1l1.8 1.8M17.1 17.1l1.8 1.8M18.9 5.1l-1.8 1.8M6.9 17.1l-1.8 1.8"/></svg>',
+  // contextual brand mark: a heritage arch (threshold) enclosing an N monogram that reads as columns + roofline
+  logo:'<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 35.5V17.5a13 13 0 0 1 26 0v18" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/><path d="M14 34.5V16l12 16.5V16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 5v14M5 12h14"/></svg>',
+  user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>',
+  target:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v4.4M12 17.6V22M2 12h4.4M17.6 12H22"/></svg>',
+  building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="3" width="13" height="18"/><path d="M9 7h2.2M12.8 7H15M9 11h2.2M12.8 11H15M9 15h2.2M12.8 15H15M10.5 21v-3h3v3"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h4M10 16.5h4"/></svg>',
+  compass:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M16 8l-2.4 5.6L8 16l2.4-5.6z"/></svg>',
+  sofa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 11V8.5A2.5 2.5 0 0 1 7.5 6h9A2.5 2.5 0 0 1 19 8.5V11"/><path d="M5 11a2 2 0 0 0-2 2v3h18v-3a2 2 0 0 0-2-2 2 2 0 0 0-2 2v1H7v-1a2 2 0 0 0-2-2Z"/><path d="M5 16v2M19 16v2"/></svg>',
+  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6.5h11v9H3zM14 9.5h3.6L21 13v2.5h-7z"/><circle cx="7" cy="18" r="1.7"/><circle cx="17" cy="18" r="1.7"/></svg>',
+  calc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7h7M8.5 11h2M11 11h2M13.5 11h2M8.5 14.5h2M11 14.5h2M13.5 14.5h2"/></svg>',
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const state = { city:'Bangalore', tab:'buy', empty:false, fav:new Set(), featIdx:0, filter:'All', sort:'newest' };
+
+/* ============================================================
+   BUILD
+   ============================================================ */
+function el(html){const t=document.createElement('template');t.innerHTML=html.trim();return t.content.firstElementChild;}
+function $(s,r=document){return r.querySelector(s);}
+function $all(s,r=document){return [...r.querySelectorAll(s)];}
+
+function buildNav(){
+  $('#logoMark').innerHTML = I.logo;
+  $('#brandMark').innerHTML = 'NYVASA';
+  const links = $('#navLinks');
+  ['Buy','Rent','New Projects','Our Story'].forEach((l,i)=>{
+    links.appendChild(el(`<a class="nav-link ${i===0?'active':''}" href="#listings">${l}</a>`));
+  });
+  $('#bookIc').innerHTML = I.plus;
+}
+
+/* mobile app bottom tab bar — 5 slots with a central Post FAB (owner-first) */
+function buildTabbar(){
+  const left=[
+    {ic:'home', label:'Home', href:'#top'},
+    {ic:'search', label:'Explore', href:'#listings'},
+  ];
+  const right=[
+    {ic:'heart', label:'Saved', href:'#listings'},
+    {ic:'user', label:'Account', href:'#listings'},
+  ];
+  const bar=$('#tabbar'); if(!bar) return;
+  const mk=(t,i)=>{
+    const b=el(`<a class="tab ${t.ic==='home'?'active':''}" href="${t.href}"><span class="ti">${I[t.ic]}</span><span class="tl">${t.label}</span></a>`);
+    b.addEventListener('click',()=>{ $all('.tab').forEach(x=>x.classList.remove('active')); b.classList.add('active'); });
+    return b;
+  };
+  left.forEach(mk2=>bar.appendChild(mk(mk2)));
+  // central Post FAB
+  const fab=el(`<button class="tab-fab" aria-label="Post a listing"><span class="fi">${I.plus}</span><span class="fl">Post</span></button>`);
+  fab.addEventListener('click',()=>{ toast('Listing flow — owners post here'); document.querySelector('#sell')?.scrollIntoView({block:'start'}); });
+  bar.appendChild(fab);
+  right.forEach(mk2=>bar.appendChild(mk(mk2)));
+}
+
+function buildHero(){
+  $('#heroImg').appendChild(imgEl('hero',1900,'Modern luxury villa with pool'));
+  $('#themeMoon').innerHTML = I.moon;
+  $('#themeSun').innerHTML = I.sun;
+  $('#annoIc').innerHTML = I.target;
+  $('#pmDot').innerHTML = I.target;
+  $('#hsLocIc').innerHTML = I.pin;
+  $('#hsLocCaret').innerHTML = I.caret;
+  $('#hsLocText').textContent = state.city;
+  $('#hsBuyIc').innerHTML = I.home;
+  $('#hsRentIc').innerHTML = I.key;
+  $('#hsToggleGo').innerHTML = I.search;
+  $('#geoBtn').innerHTML = I.geo;
+  $('#searchGo').innerHTML = `Search listings ${I.arrow}`;
+  // top property-type filter (active one shows its label)
+  const TYPES=[{t:'Villa',i:'home'},{t:'Apartment',i:'building'},{t:'Hotel & Resort',i:'key',label:'Hotels'},{t:'Plot',i:'ruler',label:'Plots'}];
+  const tf=$('#heroTypeFilter');
+  TYPES.forEach((ty,idx)=>{
+    const b=el(`<button class="htf ${idx===0?'active':''}" data-type="${ty.t}"><span class="htf-ic">${I[ty.i]}</span><span class="htf-l">${ty.label||ty.t}</span></button>`);
+    tf.appendChild(b);
+  });
+  // chips
+  $('#heroChips').innerHTML =
+    `<span class="hs-chip">${I.bed} 3 Bed</span>`+
+    `<span class="hs-chip">${I.bath} 2 Bath</span>`+
+    `<span class="hs-chip">${I.home} Villa</span>`;
+  buildNearby();
+}
+function buildNearby(){
+  // pick a listing other than the hero focus for the floating "nearby" card
+  const d = LISTINGS.find(l=>l.city===state.city && l.ttl!=='Courtyard House, Whitefield') || LISTINGS[1];
+  const wrap=$('#heroNearby'); if(!wrap) return;
+  wrap.innerHTML='';
+  const card=el(`<span class="hn-media"></span>`);
+  card.appendChild(imgEl(d.img,700,d.ttl));
+  const badge=el(`<span class="hn-badge">${I.pin} Nearby</span>`);
+  const body=el(`<span class="hn-body">
+    <span class="hn-row"><span class="hn-imgs">+28 photos</span><span class="hn-chat">${I.eye}</span></span>
+    <span class="hn-ttl">${d.ttl}</span>
+    <span class="hn-loc">${d.loc}</span>
+    <span class="hn-specs">${d.beds?`<i>${I.bed} ${d.beds}</i>`:''}${d.baths?`<i>${I.bath} ${d.baths}</i>`:''}<i>${I.area} ${/[a-z]/i.test(d.area)?d.area:d.area+' sqft'}</i></span>
+    <span class="hn-dist"><span>${I.rupee} Guide price</span><b>${d.price} ${d.unit}</b></span>
+  </span>`);
+  wrap.appendChild(card); wrap.appendChild(badge); wrap.appendChild(body);
+}
+
+function buildFeatured(){ renderFeatured(); }
+function renderFeatured(){
+  const f = FEATURED[state.featIdx];
+  $('#fxTag').textContent = `Featured Project · ${String(state.featIdx+1).padStart(2,'0')} / ${String(FEATURED.length).padStart(2,'0')}`;
+  $('#fxName').textContent = f.name;
+  $('#fxLoc').innerHTML = `${I.pin} ${f.loc}`;
+  $('#fxStats').innerHTML = `
+    <div class="fx-stat"><div class="k">${I.key} Completion</div><div class="v">${f.completion}</div></div>
+    <div class="fx-stat"><div class="k">${I.ruler} Plot Size</div><div class="v">${f.plot}<span style="font-size:.42em"> cents</span></div></div>
+    <div class="fx-stat"><div class="k">${I.home} Built-up Area</div><div class="v">${f.area}<span style="font-size:.42em"> sq ft</span></div></div>
+    <div class="fx-stat fx-price"><div class="k">${I.rupee} Guide Price</div><div class="v">${f.price}<span style="font-size:.5em"> ${f.unit}</span></div></div>`;
+  const tw = $('#fxThumbs'); tw.innerHTML='';
+  f.thumbs.forEach(t=>tw.appendChild(imgEl(t,200)));
+  $('#fxNavL').innerHTML = I.left; $('#fxNavR').innerHTML = I.right;
+  // cinematic property photo behind the blueprint panel
+  const plan = document.querySelector('.fx-plan');
+  let ph = plan.querySelector('.fx-photo');
+  if(!ph){ ph = document.createElement('div'); ph.className='fx-photo'; plan.insertBefore(ph, plan.firstChild); }
+  ph.innerHTML=''; ph.appendChild(imgEl(f.thumbs[0],1100,f.name));
+}
+
+function buildCats(){
+  const wrap = $('#cats');
+  CATEGORIES.forEach(c=>{
+    const card = el(`<a class="cat reveal" href="#listings"><div class="pad"><div class="c-n">${c.n}</div><div class="c-c">${c.c}</div></div></a>`);
+    card.insertBefore(imgEl(c.img,800,c.n), card.firstChild);
+    wrap.appendChild(card);
+  });
+}
+
+function cardHTML(d){
+  return `<article class="card reveal">
+    <div class="ph">
+      <div class="tags">${d.tag?`<span class="tagb ${d.accent?'accent':''}">${d.tag}</span>`:''}</div>
+      <button class="fav" data-fav="${d.ttl}" aria-label="Save">${I.heart}</button>
+    </div>
+    <div class="body">
+      <div class="price">${d.price}<span class="pm">${d.unit}</span></div>
+      <div class="emi-hint">${I.calc} EMI from <b>${cardEmi(d)}/mo</b></div>
+      <div class="ttl">${d.ttl}</div>
+      <div class="loc">${I.pin} ${d.loc}</div>
+      <div class="specs">
+        ${d.beds?`<span>${I.bed} ${d.beds} ${d.type==='Hotel & Resort'?'Keys':'Beds'}</span>`:''}
+        ${d.baths && d.type!=='Hotel & Resort'?`<span>${I.bath} ${d.baths} Baths</span>`:''}
+        <span>${I.area} ${/[a-z]/i.test(d.area)?d.area:d.area+' sqft'}</span>
+      </div>
+    </div></article>`;
+}
+function skeletonHTML(){
+  return `<article class="card sk skeleton">
+    <div class="ph"></div>
+    <div class="body">
+      <div class="skeleton-line price"></div>
+      <div class="skeleton-line ttl"></div>
+      <div class="skeleton-line loc"></div>
+      <div class="skeleton-line specs"></div>
+    </div></article>`;
+}
+function priceToLakhs(d){ const n=parseFloat(String(d.price).replace(/[^\d.]/g,''))||0; return d.unit==='Cr'? n*100 : n; }
+function visibleListings(){
+  let arr = LISTINGS.filter(l=> l.city===state.city);
+  if(arr.length<3) arr = LISTINGS.slice(); // fallback to all if city has few
+  if(state.filter!=='All') arr = arr.filter(l=>l.type===state.filter);
+  if(state.sort==='price-asc') arr = arr.slice().sort((a,b)=>priceToLakhs(a)-priceToLakhs(b));
+  else if(state.sort==='price-desc') arr = arr.slice().sort((a,b)=>priceToLakhs(b)-priceToLakhs(a));
+  return arr;
+}
+function renderListings(loading){
+  const grid = $('#grid');
+  grid.innerHTML='';
+  if(loading){ for(let i=0;i<6;i++) grid.appendChild(el(skeletonHTML())); return; }
+  if(state.empty){
+    grid.appendChild(el(`<div class="empty reveal in">
+      <div class="ei">${I.ghost}</div>
+      <h3>No homes match those filters</h3>
+      <p>We couldn't find listings in ${state.city} for this combination. Try widening your budget or exploring a nearby area.</p>
+      <button class="btn" id="resetEmpty">${I.refresh} Reset filters</button>
+    </div>`));
+    $('#resetEmpty').onclick = ()=>{ state.empty=false; loadListings(); };
+    const rc=$('#resultCount'); if(rc) rc.textContent='0 homes';
+    return;
+  }
+  const arr = visibleListings();
+  const rc=$('#resultCount'); if(rc) rc.textContent = arr.length + (arr.length===1?' home':' homes');
+  if(arr.length===0){ state.empty=true; renderListings(false); return; }
+  arr.forEach(d=>{
+    const c = el(cardHTML(d));
+    c.querySelector('.ph').insertBefore(imgEl(d.img,800,d.ttl), c.querySelector('.ph').firstChild);
+    if(state.fav.has(d.ttl)) c.querySelector('.fav').classList.add('on');
+    const eh=c.querySelector('.emi-hint'); if(eh) eh.onclick=(e)=>{ e.stopPropagation(); openEmi(priceToLakhs(d), d.ttl); };
+    grid.appendChild(c);
+  });
+  wireFavs(); observeReveal();
+}
+function loadListings(){
+  renderListings(true);
+  clearTimeout(loadListings._t);
+  loadListings._t = setTimeout(()=>renderListings(false), 1100);
+}
+function buildFilters(){
+  const bar = $('#listFilters');
+  ['All','Villa','Apartment','Hotel & Resort','Penthouse','Plot'].forEach(f=>{
+    bar.appendChild(el(`<button class="chip ${f==='All'?'active':''}" data-filter="${f}">${f==='All'?'All':f==='Hotel & Resort'?'Hotels':f+'s'}</button>`));
+  });
+}
+
+function buildCities(){
+  const row = $('#cityRow');
+  CITIES.slice(0,4).forEach(c=>{
+    const card = el(`<div class="city" data-city="${c.name}">
+      <div class="go">${I.arrow}</div>
+      <div class="cn">${c.name}</div>
+      <div class="cc">${c.count}</div>
+      <div class="cl">homes in ${c.region}</div>
+    </div>`);
+    card.onclick = ()=>{ setCity(c.name); document.querySelector('#listings').scrollIntoView({block:'start'}); };
+    row.appendChild(card);
+  });
+}
+
+function buildValues(){
+  const data=[
+    {i:'shield',h:'Verified, end-to-end',p:'Every listing is title-checked and RERA-validated before it reaches you.'},
+    {i:'eye',h:'See it before you visit',p:'3D tours, floor plans and real owner photography - shortlist with confidence.'},
+    {i:'user',h:'Advisors, not agents',p:'A dedicated manager handles negotiation and paperwork, at zero cost to buyers.'},
+  ];
+  const wrap=$('#values');
+  data.forEach(v=>{
+    wrap.appendChild(el(`<div class="value reveal"><div class="vi">${I[v.i]}</div><h3>${v.h}</h3><p>${v.p}</p></div>`));
+  });
+}
+
+function buildCTA(){
+  $('#ctaMedia').appendChild(imgEl('cta',1700,'Architect interior'));
+  $('#ctaBtn1').innerHTML = `${I.plus} Post your listing — free`;
+  $('#ctaBtn2').innerHTML = `${I.user} Talk to an advisor`;
+}
+
+function buildFooter(){
+  $('#footLogo').innerHTML = I.logo;
+  $('#footBrand').textContent='NYVASA';
+  const cols=[
+    {h:'Explore',a:['Buy a home','Rent a home','New projects','Plots & land','Commercial']},
+    {h:'Company',a:['Our story','Careers','Press','Advisors','Contact']},
+    {h:'Resources',a:['Home loans','Price trends','Area guides','Help centre','Sitemap']},
+  ];
+  const wrap=$('#footCols');
+  cols.forEach(c=>{
+    const col=el(`<div class="foot-col"><h4>${c.h}</h4></div>`);
+    c.a.forEach(a=>{
+      const link=el(`<a href="#">${a}</a>`);
+      if(a==='Home loans') link.onclick=(e)=>{ e.preventDefault(); openEmi(); };
+      col.appendChild(link);
+    });
+    wrap.appendChild(col);
+  });
+}
+
+/* ---------- Services hub ---------- */
+function buildServices(){
+  const wrap=$('#svcGrid'); if(!wrap) return;
+  SERVICES.forEach(s=>{
+    const c=el(`<button class="svc-card" data-svc="${s.action}">
+      ${s.tag?`<span class="tagmini">${s.tag}</span>`:''}
+      <span class="svc-ic">${I[s.ic]}</span>
+      <span class="sn">${s.n}</span>
+      <span class="sd">${s.d}</span>
+      <span class="sl">${s.a} ${I.arrow}</span>
+    </button>`);
+    c.onclick=()=>{
+      if(s.action==='emi') openEmi();
+      else if(s.action==='legal') openLegal();
+      else if(s.action==='build') openBuild();
+      else if(s.action==='interiors') openInterior();
+      else if(s.action==='movemanage') openMoveManage();
+      else toast(`${s.n} - we'll connect you with a vetted partner`);
+    };
+    wrap.appendChild(c);
+  });
+}
+
+/* ============================================================
+   MODULE 1 — HOME LOANS
+   Two value-first tools (EMI + eligibility), then a one-field
+   lead capture. Everything but the phone number is auto-captured.
+   All money held in rupees; prices in `emi.price` are lakhs.
+   ============================================================ */
+const emi = { price:120, down:20, rate:8.5, ten:20, income:150000, mode:'emi', ctx:null };
+const FOIR = 0.5; // banks cap EMI at ~50% of monthly income (India rule of thumb)
+
+function emiMonthly(loanRupees, ratePct, years){
+  const r=ratePct/12/100, n=years*12;
+  return r===0 ? loanRupees/n : loanRupees*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+}
+function loanFromEmi(emiRupees, ratePct, years){ // inverse — eligibility
+  const r=ratePct/12/100, n=years*12;
+  return r===0 ? emiRupees*n : emiRupees*(Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n));
+}
+function fmtINR(x){
+  x=Math.round(x);
+  if(x>=10000000) return '₹'+(x/10000000).toFixed(2)+' Cr';
+  if(x>=100000)   return '₹'+(x/100000).toFixed(2)+' L';
+  return '₹'+x.toLocaleString('en-IN');
+}
+function cardEmi(d){ // default assumption: 80% loan, 8.5% p.a., 20 yrs
+  return fmtINR(emiMonthly(priceToLakhs(d)*100000*0.8, 8.5, 20));
+}
+
+/* slider definitions per tab */
+const EMI_FIELDS = {
+  emi:[
+    {k:'price', l:'Property price', min:25,    max:2000,    step:5,    fmt:v=>fmtINR(v*100000)},
+    {k:'down',  l:'Down payment',   min:10,    max:60,      step:1,    fmt:v=>v+'% · '+fmtINR(emi.price*100000*v/100)},
+    {k:'rate',  l:'Interest rate',  min:7,     max:14,      step:0.05, fmt:v=>(+v).toFixed(2)+'% p.a.'},
+    {k:'ten',   l:'Loan tenure',    min:5,     max:30,      step:1,    fmt:v=>v+' years'},
+  ],
+  elig:[
+    {k:'income',l:'Monthly income', min:25000, max:1000000, step:5000, fmt:v=>fmtINR(v)+'/mo'},
+    {k:'rate',  l:'Interest rate',  min:7,     max:14,      step:0.05, fmt:v=>(+v).toFixed(2)+'% p.a.'},
+    {k:'ten',   l:'Loan tenure',    min:5,     max:30,      step:1,    fmt:v=>v+' years'},
+  ],
+};
+function emiRender(){
+  if(emi.mode==='emi'){
+    const priceRs=emi.price*100000, loan=priceRs*(1-emi.down/100), m=emiMonthly(loan,emi.rate,emi.ten);
+    $('#emiRLbl').textContent='Estimated monthly EMI';
+    $('#emiOut').textContent=fmtINR(m)+'/mo';
+    $('#emiSub').textContent=`Loan of ${fmtINR(loan)} over ${emi.ten} years at ${emi.rate.toFixed(2)}% p.a.`;
+    $('#emiBreak').innerHTML=
+      `<div class="emi-b"><span class="k">Loan amount</span><span class="v">${fmtINR(loan)}</span></div>`+
+      `<div class="emi-b"><span class="k">Total interest</span><span class="v">${fmtINR(m*emi.ten*12-loan)}</span></div>`;
+  } else {
+    const maxEMI=emi.income*FOIR, loan=loanFromEmi(maxEMI,emi.rate,emi.ten), home=loan/0.8;
+    $('#emiRLbl').textContent='You could borrow up to';
+    $('#emiOut').textContent=fmtINR(loan);
+    $('#emiSub').textContent=`On ${fmtINR(emi.income)}/mo income, over ${emi.ten} years at ${emi.rate.toFixed(2)}% p.a.`;
+    $('#emiBreak').innerHTML=
+      `<div class="emi-b"><span class="k">Comfortable EMI</span><span class="v">${fmtINR(maxEMI)}/mo</span></div>`+
+      `<div class="emi-b"><span class="k">Home value in reach</span><span class="v">${fmtINR(home)}</span></div>`;
+  }
+}
+function renderEmiFieldLabels(){
+  EMI_FIELDS[emi.mode].forEach(f=>{ const b=$(`#emiFields b[data-lbl="${f.k}"]`); if(b) b.textContent=f.fmt(emi[f.k]); });
+}
+function renderEmiFields(){
+  const wrap=$('#emiFields'); wrap.innerHTML='';
+  EMI_FIELDS[emi.mode].forEach(f=>{
+    const row=el(`<div class="emi-field">
+      <div class="emi-f-h"><span>${f.l}</span><b data-lbl="${f.k}">${f.fmt(emi[f.k])}</b></div>
+      <input type="range" min="${f.min}" max="${f.max}" step="${f.step}" value="${emi[f.k]}" data-key="${f.k}">
+    </div>`);
+    row.querySelector('input').addEventListener('input',e=>{
+      emi[f.k]=parseFloat(e.target.value);
+      renderEmiFieldLabels(); emiRender();
+    });
+    wrap.appendChild(row);
+  });
+}
+function setEmiMode(mode){
+  emi.mode=mode;
+  $all('#emiTabs .emi-tab').forEach(t=>t.classList.toggle('active',t.dataset.mode===mode));
+  const showOffers = mode==='offers';
+  $('#emiCalcView').hidden = showOffers;
+  $('#emiOffersView').hidden = !showOffers;
+  if(showOffers){ renderOffers(); }
+  else { renderEmiFields(); emiRender(); renderEmiFoot(); }
+}
+function renderEmiFoot(){
+  $('#emiFoot').innerHTML=
+    `<p class="emi-trust">${I.shield} No spam. Your number is shared only with Nyvasa's verified lending partners.</p>`+
+    `<button class="emi-cta" id="emiCta">${I.geo} Get a free callback</button>`;
+  $('#emiCta').onclick=showEmiCapture;
+}
+function showEmiCapture(){
+  $('#emiFoot').innerHTML=`<div class="emi-cap">
+      <div class="emi-cap-row">
+        <span class="emi-cc">+91</span>
+        <input id="emiPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile number" autocomplete="tel" aria-label="Mobile number">
+      </div>
+      <button class="emi-cta" id="emiSend">Request callback ${I.arrow}</button>
+      <p class="emi-trust">A loan advisor calls within 30 minutes, 9am-9pm.</p>
+    </div>`;
+  const phone=$('#emiPhone'); phone.focus();
+  phone.addEventListener('input',()=>{ phone.value=phone.value.replace(/\D/g,''); phone.classList.remove('err'); });
+  phone.addEventListener('keydown',e=>{ if(e.key==='Enter') submitEmiLead(); });
+  $('#emiSend').onclick=submitEmiLead;
+}
+function submitEmiLead(){
+  const phone=$('#emiPhone'), v=(phone.value||'').trim();
+  if(!/^[6-9]\d{9}$/.test(v)){ phone.classList.add('err'); phone.focus(); toast('Enter a valid 10-digit mobile number'); return; }
+  captureLead({phone:'+91'+v});
+  const summary = emi.mode==='emi'
+    ? `your ${fmtINR(emi.price*100000*(1-emi.down/100))} home loan in ${state.city}`
+    : `loan options in ${state.city}`;
+  $('#emiFoot').innerHTML=`<div class="emi-done">
+      <span class="emi-done-ic">${I.check}</span>
+      <div><b>Callback requested</b><span>We'll call +91 ${v} about ${summary} within 30 minutes.</span></div>
+    </div>
+    <button class="emi-next" id="emiNext">Next: verify the property title ${I.arrow}</button>`;
+  $('#emiNext').onclick=()=>{ closeEmi(); openLegal(emi.ctx); };
+}
+/* silent auto-capture: only the phone is typed; the rest is context we already hold */
+function captureLead(extra){
+  const lead=Object.assign({
+    service:'home-loan', tool:emi.mode, city:state.city,
+    price_lakhs:emi.price, down_pct:emi.down, rate_pct:emi.rate, tenure_yrs:emi.ten,
+    income_monthly:emi.income, context:emi.ctx||null, ts:new Date().toISOString()
+  }, extra);
+  return saveLead(lead);
+}
+function saveLead(lead){
+  lead.ts = lead.ts || new Date().toISOString();
+  try{ const a=JSON.parse(localStorage.getItem('nyvasa-leads')||'[]'); a.push(lead); localStorage.setItem('nyvasa-leads',JSON.stringify(a)); }catch(e){}
+  return lead;
+}
+/* shared one-field capture: renders a +91 field into footSel, validates an
+   Indian mobile, then calls onSubmit(number). Reused across modules. */
+function phoneCapture(footSel, sendLabel, note, onSubmit){
+  $(footSel).innerHTML=`<div class="emi-cap">
+    <div class="emi-cap-row"><span class="emi-cc">+91</span>
+      <input class="mm-phone" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile number" autocomplete="tel" aria-label="Mobile number"></div>
+    <button class="emi-cta mm-send">${sendLabel} ${I.arrow}</button>
+    <p class="emi-trust">${note}</p></div>`;
+  const phone=$(footSel+' .mm-phone'); phone.focus();
+  phone.addEventListener('input',()=>{ phone.value=phone.value.replace(/\D/g,''); phone.classList.remove('err'); });
+  const go=()=>{ const v=(phone.value||'').trim();
+    if(!/^[6-9]\d{9}$/.test(v)){ phone.classList.add('err'); phone.focus(); toast('Enter a valid 10-digit mobile number'); return; }
+    onSubmit(v); };
+  phone.addEventListener('keydown',e=>{ if(e.key==='Enter') go(); });
+  $(footSel+' .mm-send').onclick=go;
+}
+function doneCard(footSel, title, body){
+  $(footSel).innerHTML=`<div class="emi-done"><span class="emi-done-ic">${I.check}</span><div><b>${title}</b><span>${body}</span></div></div>`;
+}
+
+/* ---------- Best offers (score-based, consent-gated bank matching) ----------
+   Browsing offers contacts no one. A bank only receives the lead when the
+   user explicitly ticks it AND confirms with a phone number. In production the
+   soft score comes from an RBI-licensed bureau (CIBIL/Experian) via the Account
+   Aggregator framework, and offers from bank/LSP lending APIs under the RBI
+   Digital Lending Guidelines + DPDP consent. Here it's a faithful simulation. */
+const BANKS = [
+  {n:'HDFC Bank',             base:8.40, fee:'0.25% + GST'},
+  {n:'Bajaj Housing Finance', base:8.45, fee:'₹5,000'},
+  {n:'State Bank of India',   base:8.50, fee:'₹10,000 + GST'},
+  {n:'ICICI Bank',            base:8.55, fee:'0.50% + GST'},
+  {n:'Axis Bank',             base:8.60, fee:'0.50% + GST'},
+  {n:'Kotak Mahindra Bank',   base:8.70, fee:'0.50% + GST'},
+];
+const offers = { state:'form', score:0, emp:'salaried', name:'', pan:'', softConsent:false, picks:new Set() };
+
+function computeScore(){
+  let s=720;
+  if(emi.income>=200000) s+=55; else if(emi.income>=100000) s+=32; else if(emi.income>=50000) s+=14;
+  if(offers.emp==='salaried') s+=14;
+  s += Math.abs(hash(offers.pan||'NYVASA')) % 26; // deterministic 0-25 spread
+  return Math.max(680, Math.min(822, s));
+}
+function scoreBand(s){
+  const pct=(s-680)/(822-680);
+  if(s>=780) return {label:'Excellent', key:'excellent', adj:-0.10, pct};
+  if(s>=740) return {label:'Very good', key:'verygood', adj:0.00, pct};
+  if(s>=700) return {label:'Good',      key:'good',     adj:0.20, pct};
+  return       {label:'Fair',      key:'fair',     adj:0.45, pct};
+}
+function targetLoan(){ return emi.price*100000*(1-emi.down/100); }
+function buildOfferList(){
+  const band=scoreBand(offers.score), loan=targetLoan();
+  return BANKS.map(b=>{
+    const rate=+(b.base+band.adj).toFixed(2);
+    return {n:b.n, fee:b.fee, rate, emiAmt:emiMonthly(loan,rate,emi.ten), maxAmt:loanFromEmi(emi.income*FOIR,rate,emi.ten)};
+  }).sort((a,b)=>a.rate-b.rate);
+}
+function renderOffers(){
+  const v=$('#emiOffersView');
+  if(offers.state==='results'){ v.innerHTML=offersResultsHTML(); wireOffersResults(); }
+  else { v.innerHTML=offersFormHTML(); wireOffersForm(); }
+}
+function offersFormHTML(){
+  return `
+  <p class="emi-lead">See pre-qualified offers matched to your credit profile. It's a <b>soft check</b> - it won't affect your score, and <b>no bank is contacted</b> until you choose one.</p>
+  <div class="of-form">
+    <label class="of-l" for="ofName">Full name (as on PAN)</label>
+    <input class="of-in" id="ofName" type="text" autocomplete="name" placeholder="e.g. Anjali Rao" value="${offers.name}">
+    <label class="of-l" for="ofPan">PAN</label>
+    <input class="of-in" id="ofPan" type="text" maxlength="10" autocomplete="off" placeholder="ABCDE1234F" style="text-transform:uppercase" value="${offers.pan}">
+    <label class="of-l">Employment</label>
+    <div class="of-seg" id="ofEmp">
+      <button type="button" class="${offers.emp==='salaried'?'active':''}" data-emp="salaried">Salaried</button>
+      <button type="button" class="${offers.emp==='self'?'active':''}" data-emp="self">Self-employed</button>
+    </div>
+    <label class="of-l">Monthly income <b id="ofIncomeLbl">${fmtINR(emi.income)}</b></label>
+    <input type="range" id="ofIncome" min="25000" max="1000000" step="5000" value="${emi.income}">
+    <label class="of-consent">
+      <input type="checkbox" id="ofConsent" ${offers.softConsent?'checked':''}>
+      <span>I allow Nyvasa to run a soft credit check via RBI-licensed bureaus to show my offers. ${I.shield}</span>
+    </label>
+    <button class="emi-cta" id="ofGo" disabled>See my offers ${I.arrow}</button>
+  </div>`;
+}
+function wireOffersForm(){
+  const name=$('#ofName'), pan=$('#ofPan'), consent=$('#ofConsent'), go=$('#ofGo');
+  const valid=()=> name.value.trim().length>=2 && /^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pan.value.trim().toUpperCase()) && consent.checked;
+  const refresh=()=>{ go.disabled=!valid(); };
+  name.addEventListener('input',e=>{ offers.name=e.target.value; refresh(); });
+  pan.addEventListener('input',e=>{ e.target.value=e.target.value.toUpperCase(); offers.pan=e.target.value.trim(); refresh(); });
+  consent.addEventListener('change',e=>{ offers.softConsent=e.target.checked; refresh(); });
+  $('#ofEmp').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+    offers.emp=b.dataset.emp; $all('#ofEmp button').forEach(x=>x.classList.toggle('active',x===b)); });
+  $('#ofIncome').addEventListener('input',e=>{ emi.income=parseFloat(e.target.value); $('#ofIncomeLbl').textContent=fmtINR(emi.income); });
+  refresh();
+  go.onclick=()=>{
+    if(!valid()) return;
+    offers.score=computeScore(); offers.state='results';
+    // internal funnel record only — explicitly NOT shared with any bank yet
+    captureLead({stage:'offers-viewed', share_with_banks:false, name:offers.name,
+      pan_last4:offers.pan.slice(-4), employment:offers.emp, score:offers.score});
+    renderOffers();
+  };
+}
+function offersResultsHTML(){
+  const band=scoreBand(offers.score), list=buildOfferList();
+  const rows=list.map((o,i)=>`
+    <div class="of-row ${offers.picks.has(o.n)?'picked':''}" data-bank="${o.n}">
+      <div class="of-row-top">
+        <div class="of-bank">${o.n}${i===0?'<span class="of-best">Best match</span>':''}</div>
+        <div class="of-rate">${o.rate.toFixed(2)}<span>% p.a.</span></div>
+      </div>
+      <div class="of-meta">EMI ${fmtINR(o.emiAmt)}/mo · up to ${fmtINR(o.maxAmt)} · fee ${o.fee}</div>
+      <label class="of-pick"><input type="checkbox" data-pick="${o.n}" ${offers.picks.has(o.n)?'checked':''}>
+        <span>Allow ${o.n.split(' ')[0]} to call me about this offer</span></label>
+    </div>`).join('');
+  return `
+  <div class="of-score">
+    <div class="of-score-h"><span>Your credit profile</span><b class="of-soft">${I.shield} Soft check · no impact</b></div>
+    <div class="of-score-row">
+      <div class="of-score-num">${offers.score}<span>/ 900</span></div>
+      <div class="of-score-band of-band-${band.key}">${band.label}</div>
+    </div>
+    <div class="of-bar"><i style="width:${Math.round(band.pct*100)}%"></i></div>
+  </div>
+  <div class="of-list-h">${list.length} matched offers <span>for a ${fmtINR(targetLoan())} loan over ${emi.ten} yrs</span></div>
+  <div class="of-list" id="ofList">${rows}</div>
+  <div class="of-foot" id="ofFoot"></div>`;
+}
+function wireOffersResults(){
+  $('#ofList').addEventListener('change',e=>{
+    const cb=e.target.closest('input[data-pick]'); if(!cb) return;
+    const bank=cb.dataset.pick;
+    if(cb.checked) offers.picks.add(bank); else offers.picks.delete(bank);
+    cb.closest('.of-row').classList.toggle('picked',cb.checked);
+    renderOfFoot();
+  });
+  renderOfFoot();
+}
+function renderOfFoot(){
+  const foot=$('#ofFoot'), n=offers.picks.size;
+  if(n===0){ foot.innerHTML=`<p class="emi-trust">${I.shield} Tick the offers you want - banks call you only for those, and only after you confirm.</p>`; return; }
+  foot.innerHTML=`
+    <div class="emi-cap-row"><span class="emi-cc">+91</span>
+      <input id="ofPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile number" autocomplete="tel" aria-label="Mobile number"></div>
+    <button class="emi-cta" id="ofConfirm">Request ${n} callback${n>1?'s':''} ${I.arrow}</button>
+    <p class="emi-trust">Only the ${n} bank${n>1?'s':''} you ticked will call, within 1 business day. No one else gets your details.</p>`;
+  const phone=$('#ofPhone'); phone.focus();
+  phone.addEventListener('input',()=>{ phone.value=phone.value.replace(/\D/g,''); phone.classList.remove('err'); });
+  phone.addEventListener('keydown',e=>{ if(e.key==='Enter') submitOffers(); });
+  $('#ofConfirm').onclick=submitOffers;
+}
+function submitOffers(){
+  const phone=$('#ofPhone'), v=(phone.value||'').trim();
+  if(!/^[6-9]\d{9}$/.test(v)){ phone.classList.add('err'); phone.focus(); toast('Enter a valid 10-digit mobile number'); return; }
+  const picked=[...offers.picks], band=scoreBand(offers.score), list=buildOfferList();
+  picked.forEach(bank=>{
+    const o=list.find(x=>x.n===bank)||{};
+    captureLead({stage:'bank-callback', share_with_banks:true, consent_contact:true,
+      bank, offered_rate:o.rate, score:offers.score, band:band.label, phone:'+91'+v, name:offers.name, pan_last4:offers.pan.slice(-4)});
+  });
+  $('#emiOffersView').innerHTML=`<div class="emi-done">
+      <span class="emi-done-ic">${I.check}</span>
+      <div><b>${picked.length} callback${picked.length>1?'s':''} requested</b>
+      <span>${picked.join(', ')} will call +91 ${v} within 1 business day with their best offer on your ${fmtINR(targetLoan())} loan. No other bank receives your details.</span></div>
+    </div>
+    <button class="emi-next" id="ofNext">Next: verify the property title ${I.arrow}</button>`;
+  $('#ofNext').onclick=()=>{ closeEmi(); openLegal(emi.ctx); };
+}
+
+function openEmi(priceLakhs, ctx){
+  if(priceLakhs) emi.price=Math.max(25, Math.min(2000, Math.round(priceLakhs)));
+  emi.ctx = ctx||null;
+  setEmiMode('emi');
+  $('#emiBg').classList.add('open');
+}
+function closeEmi(){ $('#emiBg').classList.remove('open'); }
+function buildEmi(){
+  $('#emiX').innerHTML=I.x;
+  $('#emiX').onclick=closeEmi;
+  $('#emiBg').addEventListener('click',e=>{ if(e.target===$('#emiBg')) closeEmi(); });
+  $('#emiTabs').addEventListener('click',e=>{ const t=e.target.closest('.emi-tab'); if(t) setEmiMode(t.dataset.mode); });
+}
+
+/* ============================================================
+   MODULE 2 — LEGAL & TITLE
+   Free, transaction-specific document checklist + risk flags
+   (value first), then a paid lawyer-verification booking with
+   one-field capture. India-specific: EC, Khata, RERA, DC
+   conversion, mutation, OC/CC.
+   ============================================================ */
+const LEGAL_TYPES = [
+  {k:'resale', l:'Resale home', ic:'home', price:4999,
+    docs:['Sale Deed of the current owner','Mother Deed / 30-year title chain','Encumbrance Certificate (EC), 13+ years','A-Khata &amp; latest property tax receipts','Approved building plan &amp; Occupancy Certificate','Society / association NOC &amp; no-dues'],
+    flags:['B-Khata can block home loans and resale - confirm it is A-Khata','Scan the EC for any existing mortgage or lien','Match the title chain across every past owner']},
+  {k:'new', l:'New / builder', ic:'building', price:3999,
+    docs:['RERA registration ID (project &amp; promoter)','Title deed of the land + Mother Deed','Approved plan &amp; Commencement Certificate','Khata &amp; sanctioned layout','Builder-buyer agreement','Occupancy Certificate at possession'],
+    flags:['Verify the RERA ID on your state RERA portal before paying','Do not pay in full before the Occupancy Certificate','Check for a bank NOC if the land is mortgaged']},
+  {k:'plot', l:'Plot / land', ic:'ruler', price:6999,
+    docs:['Sale Deed &amp; Mother Deed / title chain','Encumbrance Certificate (EC)','Khata / RTC (Record of Rights)','DC conversion certificate (agri to non-agri)','Survey sketch / PODI &amp; approved layout','Property tax paid receipts'],
+    flags:['Confirm DC conversion for any non-agricultural use','Check zoning under the local CDP / master plan','Agricultural land has buyer-eligibility limits in many states']},
+  {k:'inherited', l:'Inherited', ic:'doc', price:7999,
+    docs:['Will / Succession or Legal Heir Certificate','All prior title deeds','Mutation / Khata transferred to the seller','Encumbrance Certificate (EC)','Partition or Relinquishment Deed if jointly held','NOC from every legal heir'],
+    flags:['Ensure mutation is completed in the seller’s name','Get a signed NOC from all co-heirs','Check for any pending succession or partition dispute']},
+];
+const legal = { type:'resale', ctx:null };
+function legalDef(){ return LEGAL_TYPES.find(t=>t.k===legal.type) || LEGAL_TYPES[0]; }
+function openLegal(ctx){ legal.ctx=ctx||null; legal.type='resale'; renderLegal(); $('#legalBg').classList.add('open'); }
+function closeLegal(){ $('#legalBg').classList.remove('open'); }
+function renderLegal(){ renderLegalTypes(); renderLegalContent(); renderLegalFoot(); }
+function renderLegalTypes(){
+  $('#lgTypes').innerHTML = LEGAL_TYPES.map(t=>
+    `<button class="lg-type ${t.k===legal.type?'active':''}" data-type="${t.k}">${I[t.ic]} ${t.l}</button>`).join('');
+}
+function renderLegalContent(){
+  const d=legalDef();
+  $('#lgContent').innerHTML=
+    `<div class="lg-sec"><div class="lg-h">${I.check} Documents to collect</div>`+
+      `<ul class="lg-docs">${d.docs.map(x=>`<li>${x}</li>`).join('')}</ul></div>`+
+    `<div class="lg-sec lg-flags"><div class="lg-h">${I.shield} Watch-outs</div>`+
+      `<ul>${d.flags.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+}
+function renderLegalFoot(){
+  const d=legalDef();
+  $('#lgFoot').innerHTML=
+    `<div class="lg-offer"><div>`+
+      `<div class="lg-offer-t">Lawyer-verified title report</div>`+
+      `<div class="lg-offer-s">Full document &amp; encumbrance check · report in 3-5 working days</div>`+
+    `</div><div class="lg-price">₹${d.price.toLocaleString('en-IN')}</div></div>`+
+    `<button class="emi-cta" id="lgGo">${I.shield} Book title verification</button>`+
+    `<p class="emi-trust">${I.shield} A Nyvasa-empanelled property lawyer handles it. No spam.</p>`;
+  $('#lgGo').onclick=showLegalCapture;
+}
+function showLegalCapture(){
+  $('#lgFoot').innerHTML=`<div class="emi-cap">
+    <div class="emi-cap-row"><span class="emi-cc">+91</span>
+      <input id="lgPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile number" autocomplete="tel" aria-label="Mobile number"></div>
+    <button class="emi-cta" id="lgSend">Book verification ${I.arrow}</button>
+    <p class="emi-trust">Our legal team calls within 1 business day to start, 9am-9pm.</p></div>`;
+  const phone=$('#lgPhone'); phone.focus();
+  phone.addEventListener('input',()=>{ phone.value=phone.value.replace(/\D/g,''); phone.classList.remove('err'); });
+  phone.addEventListener('keydown',e=>{ if(e.key==='Enter') submitLegal(); });
+  $('#lgSend').onclick=submitLegal;
+}
+function submitLegal(){
+  const phone=$('#lgPhone'), v=(phone.value||'').trim();
+  if(!/^[6-9]\d{9}$/.test(v)){ phone.classList.add('err'); phone.focus(); toast('Enter a valid 10-digit mobile number'); return; }
+  const d=legalDef();
+  saveLead({service:'legal-title', transaction_type:legal.type, price:d.price, city:state.city, context:legal.ctx||null, phone:'+91'+v});
+  $('#lgFoot').innerHTML=`<div class="emi-done">
+    <span class="emi-done-ic">${I.check}</span>
+    <div><b>Verification booked</b><span>Our legal team will call +91 ${v} within 1 business day to verify the title for your ${d.l.toLowerCase()} purchase in ${state.city}.</span></div></div>`;
+}
+function buildLegal(){
+  $('#legalX').innerHTML=I.x;
+  $('#legalX').onclick=closeLegal;
+  $('#legalBg').addEventListener('click',e=>{ if(e.target===$('#legalBg')) closeLegal(); });
+  $('#lgTypes').addEventListener('click',e=>{ const b=e.target.closest('.lg-type'); if(!b)return;
+    legal.type=b.dataset.type; renderLegalTypes(); renderLegalContent(); renderLegalFoot(); });
+}
+
+/* ============================================================
+   MODULE 3 — BUILD & RENOVATE  (turnkey construction)
+   Transparent ₹/sqft estimator (tier × city × area) with a live
+   cost range, timeline and split, then a free site-visit + quote
+   from vetted fixed-cost contractors. India turnkey rates.
+   ============================================================ */
+const BUILD_TIERS = {
+  essential:{l:'Essential', build:1750, reno:900,  blurb:'RCC structure with standard, durable finishes'},
+  premium:  {l:'Premium',   build:2100, reno:1300, blurb:'Branded fittings, modular kitchen, designer finishes'},
+  luxury:   {l:'Luxury',    build:2700, reno:1800, blurb:'Imported finishes, smart-home wiring, premium joinery'},
+};
+const CITY_FACTOR = {Mumbai:1.18, Goa:1.08, Bangalore:1.06, Pune:1.04, Chennai:1.0, Hyderabad:1.0, Kochi:0.98, Mysuru:0.96, Udupi:0.95};
+const build = { scope:'build', tier:'premium', area:2000, ctx:null };
+function buildRate(){ const t=BUILD_TIERS[build.tier]; return (build.scope==='reno'?t.reno:t.build)*(CITY_FACTOR[state.city]||1.0); }
+function buildTotal(){ return build.area*buildRate(); }
+function buildTimeline(){ return build.scope==='reno' ? Math.max(2,Math.round(1.5+build.area/1500)) : Math.max(5,Math.round(4+build.area/650)); }
+function renderBuild(){
+  const t=BUILD_TIERS[build.tier], rate=buildRate(), total=buildTotal();
+  $('#bdLbl').textContent = build.scope==='reno' ? 'Estimated renovation cost' : 'Estimated build cost';
+  $('#bdOut').textContent = `${fmtINR(total*0.93)} - ${fmtINR(total*1.07)}`;
+  $('#bdSub').textContent = `${t.l} ${build.scope==='reno'?'renovation':'build'} in ${state.city} · ₹${Math.round(rate).toLocaleString('en-IN')}/sqft · ${t.blurb}`;
+  $('#bdAreaLbl').textContent = build.area.toLocaleString('en-IN')+' sqft';
+  $('#bdBreak').innerHTML=
+    `<div class="emi-b"><span class="k">Timeline</span><span class="v">~${buildTimeline()} months</span></div>`+
+    `<div class="emi-b"><span class="k">Structure</span><span class="v">${fmtINR(total*0.52)}</span></div>`+
+    `<div class="emi-b"><span class="k">Finishing</span><span class="v">${fmtINR(total*0.30)}</span></div>`+
+    `<div class="emi-b"><span class="k">Services (MEP)</span><span class="v">${fmtINR(total*0.18)}</span></div>`;
+  renderBuildFoot();
+}
+function renderBuildFoot(){
+  $('#bdFoot').innerHTML=
+    `<div class="lg-offer"><div>`+
+      `<div class="lg-offer-t">Free site visit &amp; itemised quote</div>`+
+      `<div class="lg-offer-s">From 3 vetted, fixed-cost contractors near you</div>`+
+    `</div><div class="lg-price" style="font-size:18px">Free</div></div>`+
+    `<button class="emi-cta" id="bdGo">${I.compass} Get my free quote</button>`+
+    `<p class="emi-trust">${I.shield} Fixed-cost packages, milestone-linked payments, no spam.</p>`;
+  $('#bdGo').onclick=showBuildCapture;
+}
+function showBuildCapture(){
+  $('#bdFoot').innerHTML=`<div class="emi-cap">
+    <div class="emi-cap-row"><span class="emi-cc">+91</span>
+      <input id="bdPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile number" autocomplete="tel" aria-label="Mobile number"></div>
+    <button class="emi-cta" id="bdSend">Get my free quote ${I.arrow}</button>
+    <p class="emi-trust">A project consultant calls within 1 business day to plan the site visit.</p></div>`;
+  const phone=$('#bdPhone'); phone.focus();
+  phone.addEventListener('input',()=>{ phone.value=phone.value.replace(/\D/g,''); phone.classList.remove('err'); });
+  phone.addEventListener('keydown',e=>{ if(e.key==='Enter') submitBuild(); });
+  $('#bdSend').onclick=submitBuild;
+}
+function submitBuild(){
+  const phone=$('#bdPhone'), v=(phone.value||'').trim();
+  if(!/^[6-9]\d{9}$/.test(v)){ phone.classList.add('err'); phone.focus(); toast('Enter a valid 10-digit mobile number'); return; }
+  const t=BUILD_TIERS[build.tier];
+  saveLead({service:'build', scope:build.scope, tier:build.tier, area_sqft:build.area,
+    est_cost:Math.round(buildTotal()), city:state.city, context:build.ctx||null, phone:'+91'+v});
+  $('#bdFoot').innerHTML=`<div class="emi-done">
+    <span class="emi-done-ic">${I.check}</span>
+    <div><b>Quote requested</b><span>A consultant will call +91 ${v} within 1 business day to plan your ${t.l.toLowerCase()} ${build.scope==='reno'?'renovation':'build'} (${build.area.toLocaleString('en-IN')} sqft) in ${state.city}.</span></div></div>
+    <button class="emi-next" id="bdNext">Next: design the interiors ${I.arrow}</button>`;
+  $('#bdNext').onclick=()=>{ closeBuild(); openInterior(build.ctx); };
+}
+function openBuild(ctx){
+  build.ctx=ctx||null; build.scope='build'; build.tier='premium'; build.area=2000;
+  $all('#bdScope button').forEach(x=>x.classList.toggle('active',x.dataset.scope==='build'));
+  $all('#bdTier button').forEach(x=>x.classList.toggle('active',x.dataset.tier==='premium'));
+  $('#bdArea').value=2000;
+  renderBuild();
+  $('#buildBg').classList.add('open');
+}
+function closeBuild(){ $('#buildBg').classList.remove('open'); }
+function setupBuild(){
+  $('#buildX').innerHTML=I.x;
+  $('#buildX').onclick=closeBuild;
+  $('#buildBg').addEventListener('click',e=>{ if(e.target===$('#buildBg')) closeBuild(); });
+  $('#bdScope').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+    build.scope=b.dataset.scope; $all('#bdScope button').forEach(x=>x.classList.toggle('active',x===b)); renderBuild(); });
+  $('#bdTier').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+    build.tier=b.dataset.tier; $all('#bdTier button').forEach(x=>x.classList.toggle('active',x===b)); renderBuild(); });
+  $('#bdArea').addEventListener('input',e=>{ build.area=parseFloat(e.target.value); renderBuild(); });
+}
+
+/* ============================================================
+   MODULE 4 — INTERIORS  (room-by-room package estimator)
+   Pick BHK × finish tier × the spaces you want; get a transparent
+   per-space cost range, then a free designer consult + 3D layout.
+   ============================================================ */
+const INTERIOR_ITEMS = [
+  {k:'kitchen',   l:'Modular kitchen',      base:250000},
+  {k:'wardrobes', l:'Wardrobes',            base:170000},
+  {k:'living',    l:'Living & TV unit',     base:150000},
+  {k:'ceiling',   l:'False ceiling & paint',base:110000},
+  {k:'bath',      l:'Bathroom upgrades',    base:90000},
+];
+const INT_TIER = {essential:0.7, premium:1.0, luxury:1.65};
+const BHK_FACTOR = {1:0.72, 2:1.0, 3:1.35, 4:1.7};
+const interior = { bhk:2, tier:'premium', rooms:new Set(['kitchen','wardrobes','living','ceiling']), ctx:null };
+function intFactor(){ return INT_TIER[interior.tier]*(BHK_FACTOR[interior.bhk]||1)*(1+((CITY_FACTOR[state.city]||1)-1)*0.4); }
+function intItemCost(it){ return it.base*intFactor(); }
+function intTotal(){ return INTERIOR_ITEMS.filter(it=>interior.rooms.has(it.k)).reduce((s,it)=>s+intItemCost(it),0); }
+function intWeeks(){ return Math.max(3, Math.round(3 + interior.rooms.size*1.2 + (interior.tier==='luxury'?3:interior.tier==='premium'?1:0))); }
+function renderInterior(){
+  const cap = interior.tier[0].toUpperCase()+interior.tier.slice(1);
+  if(interior.rooms.size===0){
+    $('#inOut').textContent='Select a space';
+    $('#inSub').textContent='Pick at least one space to estimate';
+    $('#inBreak').innerHTML='';
+  } else {
+    const total=intTotal();
+    $('#inOut').textContent=`${fmtINR(total*0.92)} - ${fmtINR(total*1.08)}`;
+    $('#inSub').textContent=`${interior.bhk} BHK · ${cap} · ${interior.rooms.size} space${interior.rooms.size>1?'s':''} · ${state.city}`;
+    $('#inBreak').innerHTML=
+      INTERIOR_ITEMS.filter(it=>interior.rooms.has(it.k)).map(it=>
+        `<div class="emi-b"><span class="k">${it.l}</span><span class="v">${fmtINR(intItemCost(it))}</span></div>`).join('')+
+      `<div class="emi-b"><span class="k">Timeline</span><span class="v">~${intWeeks()} weeks</span></div>`;
+  }
+  $all('#inRooms .in-chip').forEach(c=>c.classList.toggle('active',interior.rooms.has(c.dataset.room)));
+  renderInteriorFoot();
+}
+function renderInteriorFoot(){
+  $('#inFoot').innerHTML=
+    `<div class="lg-offer"><div>`+
+      `<div class="lg-offer-t">Free design consult &amp; 3D layout</div>`+
+      `<div class="lg-offer-s">Meet a designer and see your home in 3D before you commit</div>`+
+    `</div><div class="lg-price" style="font-size:18px">Free</div></div>`+
+    `<button class="emi-cta" id="inGo"${interior.rooms.size===0?' disabled':''}>${I.sofa} Book free consult</button>`+
+    `<p class="emi-trust">${I.shield} Flat 10-year warranty on modular work. No spam.</p>`;
+  $('#inGo').onclick=showInteriorCapture;
+}
+function showInteriorCapture(){
+  $('#inFoot').innerHTML=`<div class="emi-cap">
+    <div class="emi-cap-row"><span class="emi-cc">+91</span>
+      <input id="inPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile number" autocomplete="tel" aria-label="Mobile number"></div>
+    <button class="emi-cta" id="inSend">Book free consult ${I.arrow}</button>
+    <p class="emi-trust">A designer calls within 1 business day to set up your consult.</p></div>`;
+  const phone=$('#inPhone'); phone.focus();
+  phone.addEventListener('input',()=>{ phone.value=phone.value.replace(/\D/g,''); phone.classList.remove('err'); });
+  phone.addEventListener('keydown',e=>{ if(e.key==='Enter') submitInterior(); });
+  $('#inSend').onclick=submitInterior;
+}
+function submitInterior(){
+  const phone=$('#inPhone'), v=(phone.value||'').trim();
+  if(!/^[6-9]\d{9}$/.test(v)){ phone.classList.add('err'); phone.focus(); toast('Enter a valid 10-digit mobile number'); return; }
+  saveLead({service:'interiors', bhk:interior.bhk, tier:interior.tier, spaces:[...interior.rooms],
+    est_cost:Math.round(intTotal()), city:state.city, context:interior.ctx||null, phone:'+91'+v});
+  $('#inFoot').innerHTML=`<div class="emi-done">
+    <span class="emi-done-ic">${I.check}</span>
+    <div><b>Consult booked</b><span>A designer will call +91 ${v} within 1 business day to plan your ${interior.bhk} BHK interiors in ${state.city}.</span></div></div>`;
+}
+function openInterior(ctx){
+  interior.ctx=ctx||null; interior.bhk=2; interior.tier='premium';
+  interior.rooms=new Set(['kitchen','wardrobes','living','ceiling']);
+  $all('#inBhk button').forEach(x=>x.classList.toggle('active',+x.dataset.bhk===2));
+  $all('#inTier button').forEach(x=>x.classList.toggle('active',x.dataset.tier==='premium'));
+  renderInterior();
+  $('#interiorBg').classList.add('open');
+}
+function closeInterior(){ $('#interiorBg').classList.remove('open'); }
+function setupInterior(){
+  $('#interiorX').innerHTML=I.x;
+  $('#interiorX').onclick=closeInterior;
+  $('#interiorBg').addEventListener('click',e=>{ if(e.target===$('#interiorBg')) closeInterior(); });
+  $('#inBhk').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+    interior.bhk=+b.dataset.bhk; $all('#inBhk button').forEach(x=>x.classList.toggle('active',x===b)); renderInterior(); });
+  $('#inTier').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+    interior.tier=b.dataset.tier; $all('#inTier button').forEach(x=>x.classList.toggle('active',x===b)); renderInterior(); });
+  $('#inRooms').addEventListener('click',e=>{ const b=e.target.closest('.in-chip'); if(!b)return;
+    const r=b.dataset.room; if(interior.rooms.has(r)) interior.rooms.delete(r); else interior.rooms.add(r); renderInterior(); });
+}
+
+/* ============================================================
+   MODULE 5 — MOVE & MANAGE  (closes the lifecycle)
+   Two paths in one sheet: a packers-and-movers estimator, and an
+   owner-side rental-management sign-up (you stay the owner, we run
+   tenanting, rent collection, maintenance). India rate cards.
+   ============================================================ */
+const MOVE_BHK = {1:{base:6000,vol:1.0}, 2:{base:10000,vol:1.6}, 3:{base:15000,vol:2.3}, 4:{base:21000,vol:3.0}};
+const MANAGE_INCL = {
+  full:['Tenant sourcing & verification','Rent collection & deposit handling','Maintenance & repairs coordination','Quarterly property inspections','Registered rent agreement'],
+  find:['Tenant sourcing & verification','Background & police verification','Registered rent agreement','Move-in coordination'],
+};
+const mm = { mode:'move', ctx:null };
+const mv = { bhk:2, type:'local', dist:400 };
+const mg = { rent:35000, plan:'full' };
+
+function openMoveManage(ctx){
+  mm.ctx=ctx||null; mm.mode='move';
+  mv.bhk=2; mv.type='local'; mv.dist=400; mg.rent=35000; mg.plan='full';
+  $all('#mmMode button').forEach(x=>x.classList.toggle('active',x.dataset.mode==='move'));
+  renderMM();
+  $('#mmBg').classList.add('open');
+}
+function closeMoveManage(){ $('#mmBg').classList.remove('open'); }
+function renderMM(){ mm.mode==='manage' ? renderManageView() : renderMoveView(); }
+
+/* ---- Move ---- */
+function mvTotal(){ const b=MOVE_BHK[mv.bhk];
+  return mv.type==='local' ? b.base*(CITY_FACTOR[state.city]||1) : b.base*1.4 + 22*mv.dist*b.vol; }
+function renderMoveView(){
+  $('#mmBody').innerHTML=`
+    <div class="emi-result"><div class="emi-r-lbl">Estimated moving cost</div><div class="emi-r-val" id="mvOut">-</div><div class="emi-r-sub" id="mvSub"></div></div>
+    <div class="of-seg bd-seg" id="mvBhk">${[1,2,3,4].map(n=>`<button type="button" data-bhk="${n}" class="${mv.bhk===n?'active':''}">${n} BHK</button>`).join('')}</div>
+    <div class="of-seg bd-seg" id="mvType"><button type="button" data-type="local" class="${mv.type==='local'?'active':''}">Local</button><button type="button" data-type="intercity" class="${mv.type==='intercity'?'active':''}">Intercity</button></div>
+    <div class="emi-field" id="mvDistWrap"><div class="emi-f-h"><span>Distance</span><b id="mvDistLbl"></b></div><input type="range" id="mvDist" min="50" max="2500" step="50" value="${mv.dist}"></div>
+    <div class="emi-break" id="mvBreak"></div>
+    <div class="emi-foot" id="mvFoot"></div>`;
+  $('#mvBhk').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; mv.bhk=+b.dataset.bhk; $all('#mvBhk button').forEach(x=>x.classList.toggle('active',x===b)); mvUpdate(); });
+  $('#mvType').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; mv.type=b.dataset.type; $all('#mvType button').forEach(x=>x.classList.toggle('active',x===b)); mvUpdate(); });
+  $('#mvDist').addEventListener('input',e=>{ mv.dist=+e.target.value; mvUpdate(); });
+  mvUpdate();
+}
+function mvUpdate(){
+  const total=mvTotal(), spread=mv.type==='local'?0.25:0.18;
+  $('#mvDistWrap').style.display = mv.type==='intercity'?'block':'none';
+  $('#mvOut').textContent=`${fmtINR(total*(1-spread))} - ${fmtINR(total*(1+spread))}`;
+  $('#mvSub').textContent = mv.type==='local' ? `${mv.bhk} BHK · local move in ${state.city}` : `${mv.bhk} BHK · intercity · ${mv.dist} km`;
+  $('#mvDistLbl').textContent = mv.dist+' km';
+  const tl = mv.type==='local' ? '1 day' : `~${Math.max(2,Math.round(mv.dist/400)+1)} days transit`;
+  $('#mvBreak').innerHTML=
+    `<div class="emi-b"><span class="k">Packing & material</span><span class="v">${fmtINR(total*0.30)}</span></div>`+
+    `<div class="emi-b"><span class="k">Transport</span><span class="v">${fmtINR(total*0.45)}</span></div>`+
+    `<div class="emi-b"><span class="k">Loading & labour</span><span class="v">${fmtINR(total*0.18)}</span></div>`+
+    `<div class="emi-b"><span class="k">Transit insurance</span><span class="v">${fmtINR(total*0.07)}</span></div>`+
+    `<div class="emi-b"><span class="k">Timeline</span><span class="v">${tl}</span></div>`;
+  $('#mvFoot').innerHTML=
+    `<div class="lg-offer"><div><div class="lg-offer-t">Free packing survey &amp; fixed quote</div><div class="lg-offer-s">From 3 verified, insured movers near you</div></div><div class="lg-price" style="font-size:18px">Free</div></div>`+
+    `<button class="emi-cta" id="mvGo">${I.truck} Get mover quotes</button>`+
+    `<p class="emi-trust">${I.shield} Insured transit, verified crews, no spam.</p>`;
+  $('#mvGo').onclick=()=>phoneCapture('#mvFoot','Get mover quotes','Verified movers call within 1 business day with fixed quotes.',submitMove);
+}
+function submitMove(v){
+  saveLead({service:'move', bhk:mv.bhk, move_type:mv.type, distance_km:mv.type==='intercity'?mv.dist:null,
+    est_cost:Math.round(mvTotal()), city:state.city, context:mm.ctx||null, phone:'+91'+v});
+  doneCard('#mvFoot','Quotes requested',`Verified movers will call +91 ${v} within 1 business day with quotes for your ${mv.bhk} BHK ${mv.type} move.`);
+}
+
+/* ---- Manage (owner-side) ---- */
+function renderManageView(){
+  $('#mmBody').innerHTML=`
+    <div class="emi-result"><div class="emi-r-lbl" id="mgLbl"></div><div class="emi-r-val" id="mgOut">-</div><div class="emi-r-sub" id="mgSub"></div></div>
+    <div class="of-seg bd-seg" id="mgPlan"><button type="button" data-plan="full" class="${mg.plan==='full'?'active':''}">Full management</button><button type="button" data-plan="find" class="${mg.plan==='find'?'active':''}">Tenant find</button></div>
+    <div class="emi-field"><div class="emi-f-h"><span>Monthly rent</span><b id="mgRentLbl"></b></div><input type="range" id="mgRent" min="8000" max="300000" step="1000" value="${mg.rent}"></div>
+    <div class="lg-sec" id="mgIncl" style="margin-bottom:18px"></div>
+    <div class="emi-foot" id="mgFoot"></div>`;
+  $('#mgPlan').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; mg.plan=b.dataset.plan; $all('#mgPlan button').forEach(x=>x.classList.toggle('active',x===b)); mgUpdate(); });
+  $('#mgRent').addEventListener('input',e=>{ mg.rent=+e.target.value; mgUpdate(); });
+  mgUpdate();
+}
+function mgUpdate(){
+  $('#mgRentLbl').textContent=fmtINR(mg.rent)+'/mo';
+  if(mg.plan==='full'){ $('#mgLbl').textContent='Full management fee'; $('#mgOut').textContent=fmtINR(mg.rent*0.08)+'/mo'; $('#mgSub').textContent='8% of monthly rent · cancel anytime'; }
+  else { $('#mgLbl').textContent='Tenant-find fee'; $('#mgOut').textContent=fmtINR(mg.rent*0.5); $('#mgSub').textContent='One-time · ½ month rent · pay only on move-in'; }
+  $('#mgIncl').innerHTML=`<div class="lg-h">${I.check} What's included</div><ul class="lg-docs">${MANAGE_INCL[mg.plan].map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  $('#mgFoot').innerHTML=`<button class="emi-cta" id="mgGo">${I.home} List my property to manage</button>`+
+    `<p class="emi-trust">${I.shield} You stay the owner - we handle the hassle. No spam.</p>`;
+  $('#mgGo').onclick=()=>phoneCapture('#mgFoot','List my property','A property manager calls within 1 business day to onboard you.',submitManage);
+}
+function submitManage(v){
+  saveLead({service:'manage', plan:mg.plan, monthly_rent:mg.rent, city:state.city, context:mm.ctx||null, phone:'+91'+v});
+  doneCard('#mgFoot','Property listed for management',`A property manager will call +91 ${v} within 1 business day to onboard your ${fmtINR(mg.rent)}/mo rental in ${state.city}.`);
+}
+function setupMoveManage(){
+  $('#mmX').innerHTML=I.x;
+  $('#mmX').onclick=closeMoveManage;
+  $('#mmBg').addEventListener('click',e=>{ if(e.target===$('#mmBg')) closeMoveManage(); });
+  $('#mmMode').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return;
+    mm.mode=b.dataset.mode; $all('#mmMode button').forEach(x=>x.classList.toggle('active',x===b)); renderMM(); });
+}
+
+/* ---------- Location modal ---------- */
+function buildModal(){
+  $('#detectIc').innerHTML = I.geo;
+  $('#modalX').innerHTML = I.x;
+  const grid=$('#cityGrid');
+  CITIES.forEach(c=>{
+    const o=el(`<button class="city-opt ${c.name===state.city?'sel':''}" data-city="${c.name}"><div class="con">${c.name}</div><div class="coc">${c.region} · ${c.count}</div></button>`);
+    o.onclick=()=>{ setCity(c.name); closeModal(); };
+    grid.appendChild(o);
+  });
+}
+function openModal(){ $('#modalBg').classList.add('open'); }
+function closeModal(){ $('#modalBg').classList.remove('open'); }
+function setHeroMode(mode){ state.tab=mode; $('#hsgBuy').classList.toggle('active',mode==='buy'); $('#hsgRent').classList.toggle('active',mode==='rent'); }
+function goSearch(){ toast(`Searching ${state.tab==='rent'?'rentals':'homes'} · ${state.city}`); document.querySelector('#listings').scrollIntoView({block:'start'}); loadListings(); }
+function syncListFilterChips(){ $all('#listFilters .chip').forEach(c=>c.classList.toggle('active', c.dataset.filter===state.filter)); }
+function setCity(name){
+  state.city=name;
+  const lt=$('#hsLocText'); if(lt) lt.textContent=name;
+  $all('.city-opt').forEach(o=>o.classList.toggle('sel',o.dataset.city===name));
+  $('#listCity').textContent=name;
+  buildNearby();
+  toast(`Showing homes in ${name}`);
+  loadListings();
+}
+function detectLocation(btn){
+  btn.classList.add('loading');
+  const t=$('#detectTxt'); const prev=t.innerHTML;
+  t.innerHTML='<b>Detecting…</b><span>Reading your approximate location</span>';
+  setTimeout(()=>{
+    btn.classList.remove('loading');
+    t.innerHTML=prev;
+    setCity('Udupi');
+    closeModal();
+  },1600);
+}
+
+/* ---------- favourites ---------- */
+function wireFavs(){
+  $all('.fav').forEach(b=>{
+    b.onclick=()=>{
+      const id=b.dataset.fav;
+      if(state.fav.has(id)){state.fav.delete(id);b.classList.remove('on');}
+      else{state.fav.add(id);b.classList.add('on');toast('Saved to your shortlist');}
+    };
+  });
+}
+
+/* ---------- toast ---------- */
+let toastT;
+function toast(msg){
+  const t=$('#toast'); t.querySelector('span').textContent=msg;
+  t.classList.add('show'); clearTimeout(toastT);
+  toastT=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* ---------- reveal on scroll ---------- */
+/* ---------- reveal on scroll (robust, no IO dependency) ---------- */
+function showEl(n){ n.classList.add('in'); n.style.opacity='1'; n.style.transform='none'; }
+function revealCheck(){
+  $all('.reveal:not(.in)').forEach(n=>{ if(n.getBoundingClientRect().top < innerHeight*0.92) showEl(n); });
+}
+let revealTick=false;
+function onScrollReveal(){ if(revealTick)return; revealTick=true; requestAnimationFrame(()=>{revealCheck();revealTick=false;}); }
+function observeReveal(){
+  revealCheck();
+  // hard fallback: never leave content hidden (covers fast scroll / export / reduced-motion)
+  clearTimeout(observeReveal._t);
+  observeReveal._t=setTimeout(()=>$all('.reveal:not(.in)').forEach(n=>showEl(n)),900);
+}
+
+/* ============================================================
+   EVENTS
+   ============================================================ */
+function wireEvents(){
+  // nav links active
+  $('#navLinks').addEventListener('click',e=>{
+    const a=e.target.closest('.nav-link'); if(!a)return;
+    $all('#navLinks .nav-link').forEach(x=>x.classList.remove('active')); a.classList.add('active');
+  });
+  // location: search field opens the city picker
+  $('#locInput').onclick=openModal;
+  $('#modalX').onclick=closeModal;
+  $('#modalBg').addEventListener('click',e=>{if(e.target===$('#modalBg'))closeModal();});
+  $('#detectBtn').onclick=()=>detectLocation($('#detectBtn'));
+  // hero geo
+  $('#geoBtn').onclick=(e)=>{ e.stopPropagation(); const b=$('#geoBtn'); b.classList.add('loading'); setTimeout(()=>{b.classList.remove('loading');setCity('Udupi');},1400); };
+  // hero property-type filter → filters the listings grid
+  $('#heroTypeFilter').addEventListener('click',e=>{
+    const t=e.target.closest('.htf'); if(!t)return;
+    const active=t.classList.contains('active');
+    $all('.htf').forEach(x=>x.classList.remove('active'));
+    if(active){ state.filter='All'; }
+    else { t.classList.add('active'); state.filter=t.dataset.type; }
+    syncListFilterChips(); loadListings();
+  });
+  // Buy / Rent toggle
+  $('#hsgBuy').onclick=()=>setHeroMode('buy');
+  $('#hsgRent').onclick=()=>setHeroMode('rent');
+  $('#hsToggleGo').onclick=()=>goSearch();
+  // nearby card → jump to listings
+  $('#heroNearby').onclick=()=>{ document.querySelector('#listings').scrollIntoView({block:'start'}); };
+  $('#searchGo').onclick=goSearch;
+  // theme toggle — hero buttons + nav button all drive the whole site
+  $('#themeMoon').onclick=()=>setTheme('dark');
+  $('#themeSun').onclick=()=>setTheme('light');
+  $('#themeBtn').onclick=()=>setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+  // featured carousel
+  $('#fxNavL').onclick=()=>{state.featIdx=(state.featIdx-1+FEATURED.length)%FEATURED.length;renderFeatured();};
+  $('#fxNavR').onclick=()=>{state.featIdx=(state.featIdx+1)%FEATURED.length;renderFeatured();};
+  // listing filters
+  $('#listFilters').addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c)return;
+    $all('#listFilters .chip').forEach(x=>x.classList.remove('active')); c.classList.add('active');
+    state.filter=c.dataset.filter; loadListings();
+  });
+  // sort cycle: Newest → Price: Low → Price: High
+  const SORTS=[['newest','Newest'],['price-asc','Price: Low'],['price-desc','Price: High']];
+  $('#sortBtn').onclick=()=>{
+    const i=SORTS.findIndex(s=>s[0]===state.sort);
+    const next=SORTS[(i+1)%SORTS.length];
+    state.sort=next[0]; $('#sortLabel').textContent=next[1];
+    renderListings(false);
+  };
+}
+function setTheme(mode){
+  const root=document.documentElement;
+  // suspend transitions during the swap so no var()-based paint gets stuck
+  root.classList.add('theme-switching');
+  root.setAttribute('data-theme',mode);
+  root.setAttribute('data-hero-theme',mode); // keep hero scrim in sync
+  // hero toggle pills
+  $('#themeMoon')&&$('#themeMoon').classList.toggle('on',mode==='dark');
+  $('#themeSun')&&$('#themeSun').classList.toggle('on',mode==='light');
+  // nav button shows the icon for the mode you'll switch TO
+  const tb=$('#themeBtn'); if(tb) tb.innerHTML = mode==='dark' ? I.sun2 : I.moon2;
+  // browser/status-bar chrome colour
+  const meta=$('#themeColorMeta'); if(meta) meta.setAttribute('content', mode==='dark' ? '#15160f' : '#f4f1ea');
+  const sb=document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+  if(sb) sb.setAttribute('content', mode==='dark' ? 'black-translucent' : 'default');
+  try{ localStorage.setItem('nyvasa-theme',mode); }catch(e){}
+  // re-enable transitions after the paint settles
+  void root.offsetWidth;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('theme-switching')));
+}
+function initTheme(){
+  let mode='light';
+  try{ mode=localStorage.getItem('nyvasa-theme')|| (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); }catch(e){}
+  setTheme(mode);
+}
+/* nav contrast: solidify the floating nav once we scroll off the hero image */
+function initNavScroll(){
+  const nav=document.querySelector('.nav');
+  const hero=document.querySelector('.hero');
+  if(!nav||!hero) return;
+  const onScroll=()=>{ nav.classList.toggle('scrolled', window.scrollY > hero.offsetHeight - 90); };
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
+  onScroll();
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init(){
+  buildNav(); buildTabbar(); buildHero(); buildFeatured(); buildCats(); buildFilters();
+  buildCities(); buildServices(); buildValues(); buildCTA(); buildFooter(); buildModal(); buildEmi(); buildLegal(); setupBuild(); setupInterior(); setupMoveManage();
+  wireEvents(); initTheme(); initNavScroll();
+  loadListings(); observeReveal();
+  window.addEventListener('scroll',onScrollReveal,{passive:true});
+  window.addEventListener('resize',onScrollReveal,{passive:true});
+}
+document.addEventListener('DOMContentLoaded',init);
+
+</script>
+
+<!-- TWEAKS (React island) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<div id="tweaks-root"></div>
+<script type="text/babel">
+// @ds-adherence-ignore -- omelette starter scaffold (raw elements/hex/px by design)
+
+/* BEGIN USAGE */
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+// Exports (to window): useTweaks, TweaksPanel, TweakSection, TweakRow, TweakSlider,
+//   TweakToggle, TweakRadio, TweakSelect, TweakText, TweakNumber, TweakColor, TweakButton.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// TweakRadio is the segmented control for 2–3 short options (auto-falls-back to
+// TweakSelect past ~16/~10 chars per label); reach for TweakSelect directly when
+// options are many or long. For color tweaks always curate 3-4 options rather than
+// a free picker; an option can also be a whole 2–5 color palette (the stored value
+// is the array). The Tweak* controls are a floor, not a ceiling — build custom
+// controls inside the panel if a tweak calls for UI they don't cover.
+/* END USAGE */
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;box-sizing:border-box;width:100%;min-width:0;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;box-sizing:border-box;min-width:0;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
+    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
+    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
+  .twk-chip:hover{transform:translateY(-1px);
+    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
+    0 2px 6px rgba(0,0,0,.15)}
+  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
+    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i:first-child{box-shadow:none}
+  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-omelette-chrome=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    const resolve = (s) => {
+      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+      return m === undefined ? s : typeof m === 'object' ? m.value : m;
+    };
+    return <TweakSelect label={label} value={value} options={options}
+                        onChange={(s) => onChange(resolve(s))} />;
+  }
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  const h = String(hex).replace('#', '');
+  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+
+const __TwkCheck = ({ light }) => (
+  <svg viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round"
+          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
+  </svg>
+);
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor({ label, value, options, onChange }) {
+  if (!options || !options.length) {
+    return (
+      <div className="twk-row twk-row-h">
+        <div className="twk-lbl"><span>{label}</span></div>
+        <input type="color" className="twk-swatch" value={value}
+               onChange={(e) => onChange(e.target.value)} />
+      </div>
+    );
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const cur = key(value);
+  return (
+    <TweakRow label={label}>
+      <div className="twk-chips" role="radiogroup">
+        {options.map((o, i) => {
+          const colors = Array.isArray(o) ? o : [o];
+          const [hero, ...rest] = colors;
+          const sup = rest.slice(0, 4);
+          const on = key(o) === cur;
+          return (
+            <button key={i} type="button" className="twk-chip" role="radio"
+                    aria-checked={on} data-on={on ? '1' : '0'}
+                    aria-label={colors.join(', ')} title={colors.join(' · ')}
+                    style={{ background: hero }}
+                    onClick={() => onChange(o)}>
+              {sup.length > 0 && (
+                <span>
+                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
+                </span>
+              )}
+              {on && <__TwkCheck light={__twkIsLight(hero)} />}
+            </button>
+          );
+        })}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+</script>
+<script type="text/babel">
+/* Nivasa — Tweaks panel (React island) */
+const { useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "palette": "sage",
+  "headlineFont": "Archivo",
+  "cards": "sharp",
+  "heroLayout": "overlap"
+}/*EDITMODE-END*/;
+
+const FONT_STACK = {
+  "Archivo": "'Archivo'",
+  "Bricolage Grotesque": "'Bricolage Grotesque'",
+  "Syne": "'Syne'",
+};
+
+function NivasaTweaks() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const root = document.documentElement;
+
+  useEffect(() => { root.setAttribute('data-palette', t.palette); }, [t.palette]);
+  useEffect(() => { root.style.setProperty('--font-display', FONT_STACK[t.headlineFont] || "'Archivo'"); }, [t.headlineFont]);
+  useEffect(() => { root.setAttribute('data-cards', t.cards); }, [t.cards]);
+  useEffect(() => { root.setAttribute('data-hero-layout', t.heroLayout); }, [t.heroLayout]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Palette" />
+      <TweakColor
+        label="Theme"
+        value={
+          t.palette === 'sand'  ? ['#b08545', '#1c1814', '#f6f2ea'] :
+          t.palette === 'navy'  ? ['#1b2b4a', '#161c28', '#f1f3f6'] :
+                                  ['#3a4a3f', '#1a1a17', '#f4f1ea']
+        }
+        options={[
+          ['#3a4a3f', '#1a1a17', '#f4f1ea'],
+          ['#b08545', '#1c1814', '#f6f2ea'],
+          ['#1b2b4a', '#161c28', '#f1f3f6'],
+        ]}
+        onChange={(v) => setTweak('palette', v[0] === '#b08545' ? 'sand' : v[0] === '#1b2b4a' ? 'navy' : 'sage')}
+      />
+
+      <TweakSection label="Typography" />
+      <TweakSelect
+        label="Headline font"
+        value={t.headlineFont}
+        options={["Archivo", "Bricolage Grotesque", "Syne"]}
+        onChange={(v) => setTweak('headlineFont', v)}
+      />
+
+      <TweakSection label="Layout" />
+      <TweakRadio
+        label="Hero headline"
+        value={t.heroLayout}
+        options={["overlap", "centered"]}
+        onChange={(v) => setTweak('heroLayout', v)}
+      />
+      <TweakRadio
+        label="Corners"
+        value={t.cards}
+        options={["sharp", "rounded"]}
+        onChange={(v) => setTweak('cards', v)}
+      />
+    </TweaksPanel>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<NivasaTweaks />);
+
+</script>
+
+</body>
+</html>
